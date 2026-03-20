@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""GHA 客服数据 Dashboard v3 — 图表多样化 + 营销视角洞察"""
+"""GHA 客服数据 Dashboard v4 — 移除处理状态"""
 
 from collections import Counter
 import os
@@ -24,16 +24,6 @@ CORAL  = '#F69B6F'
 GREEN  = '#5D8C6A'
 PURPLE = '#300B5C'
 PALETTE = [GOLD, BLUE, CORAL, GREEN, PURPLE, '#B7CBD5', '#C4A882', '#7A9898', '#E8C880', '#9090B8']
-
-STATUS_COLOR = {
-    '已解决 / Resolved':    GREEN,
-    '处理中 / In Progress': GOLD,
-    '待处理 / Pending':     BLUE,
-    '已升级 / Escalated':   CORAL,
-}
-STATUS_SHORT_COLOR = {
-    '已解决': GREEN, '处理中': GOLD, '待处理': BLUE, '已升级': CORAL,
-}
 
 # ── 全局样式 ──
 st.markdown(f"""
@@ -85,13 +75,11 @@ def load_data():
     df = pd.read_csv(csv_path, encoding='utf-8')
     df = df[df['id'].notna() & (df['id'].astype(str).str.strip() != '')]
     CHANNEL_MAP  = {'微信':'微信 / WeChat','小红书':'小红书 / Xiaohongshu','微信群':'微信群 / WeChat Group','电话':'电话 / Phone','邮件':'邮件 / Email','其他':'其他 / Other'}
-    PLATFORM_MAP = {'微信小程序':'微信小程序 / WeChat Mini Program','中文小程序或官网':'中文小程序或官网 / CN Mini Program','GHA英文app':'GHA英文app / GHA App','GHA英文平台':'GHA英文平台 / GHA Platform','英文app':'GHA英文app / GHA App','全平台':'全平台 / All Platforms','其他':'其他 / Other'}
+    PLATFORM_MAP = {'微信小程序':'中文官网和小程序 / CN Website & Mini Program','中文小程序或官网':'中文官网和小程序 / CN Website & Mini Program','GHA英文app':'GHA英文平台 / GHA Platform','GHA英文平台':'GHA英文平台 / GHA Platform','英文app':'GHA英文平台 / GHA Platform','全平台':'全平台 / All Platforms','其他':'全平台 / All Platforms'}
     CATEGORY_MAP = {'技术bug':'技术bug / Tech Bug','需求':'需求 / Feature Request','客服':'客服 / Support','功能':'功能 / Function','价格优势':'价格优势 / Pricing','会员权益反馈':'会员权益 / Benefits','酒店规则和数据不一致':'数据不一致 / Data Mismatch','其他':'其他 / Other'}
-    STATUS_MAP   = {'已解决':'已解决 / Resolved','处理中':'处理中 / In Progress','待处理':'待处理 / Pending','已升级':'已升级 / Escalated'}
     df['channel']  = df['channel'].map(lambda x: CHANNEL_MAP.get(str(x).strip(), str(x)) if pd.notna(x) else '')
     df['platform'] = df['platform'].map(lambda x: PLATFORM_MAP.get(str(x).strip(), str(x)) if pd.notna(x) else '')
     df['category'] = df['category'].map(lambda x: CATEGORY_MAP.get(str(x).strip(), str(x)) if pd.notna(x) else '')
-    df['status']   = df['status'].map(lambda x: STATUS_MAP.get(str(x).strip(), str(x)) if pd.notna(x) else '')
     df['date']     = pd.to_datetime(df['date'], errors='coerce')
     return df
 
@@ -102,7 +90,6 @@ def insight_category(df):
     if top.empty: return ''
     name, cnt = top.index[0], top.iloc[0]
     pct = cnt / len(df) * 100
-    ur = len(df[(df['category'] == name) & (~df['status'].str.contains('Resolved', na=False))])
     cat_s = name.split('/')[0].strip()
     if '技术' in cat_s or 'bug' in cat_s.lower():
         angle = '技术问题在小红书等开放平台易演变为负面 UGC，建议快速响应并主动公告处理进展'
@@ -114,7 +101,7 @@ def insight_category(df):
         angle = '数据不一致影响用户决策，需向酒店和平台团队同步跟进，并在内容端说明差异'
     else:
         angle = '建议通过自助内容（FAQ/教程）前置拦截，降低重复咨询率'
-    return (f'<b>{name}</b> 是最高频问题，占 <b>{pct:.0f}%</b>（{cnt} 条），其中 <b>{ur}</b> 条待解决。{angle}。')
+    return f'<b>{name}</b> 是最高频问题，占 <b>{pct:.0f}%</b>（{cnt} 条）。{angle}。'
 
 
 def insight_channel(df):
@@ -122,20 +109,32 @@ def insight_channel(df):
     if top.empty: return ''
     name, cnt = top.index[0], top.iloc[0]
     pct = cnt / len(df) * 100
-    ch_df = df[df['channel'] == name]
-    res = ch_df['status'].str.contains('Resolved', na=False).sum()
-    rate = res / len(ch_df) * 100 if len(ch_df) else 0
     ch_s = name.split('/')[0].strip()
     if '小红书' in ch_s:
         angle = '小红书为开放平台，咨询公开可见，建议设定 24h 内响应 SLA 保护品牌形象'
     elif '微信群' in ch_s:
-        angle = '社群场景中未解决问题对全体成员可见，优先处理可提升社群信任度'
+        angle = '社群场景中问题对全体成员可见，优先处理可提升社群信任度'
     elif '微信' in ch_s:
-        angle = '私域核心阵地，解决率直接影响用户留存与口碑传播'
+        angle = '私域核心阵地，响应质量直接影响用户留存与口碑传播'
     else:
         angle = '建议持续跟踪该渠道响应速度与用户满意度'
-    perf = '✅ 良好' if rate >= 70 else '⚠️ 有提升空间'
-    return (f'<b>{name}</b> 是主要来源渠道（占 <b>{pct:.0f}%</b>），解决率 <b>{rate:.0f}%</b> {perf}。{angle}。')
+    return f'<b>{name}</b> 是主要来源渠道（占 <b>{pct:.0f}%</b>，{cnt} 条）。{angle}。'
+
+
+def insight_ch_cat(df):
+    top_ch  = df['channel'].value_counts().index[0]  if not df['channel'].value_counts().empty  else ''
+    top_cat = df['category'].value_counts().index[0] if not df['category'].value_counts().empty else ''
+    if not top_ch or not top_cat: return ''
+    flow = df[(df['channel'] == top_ch) & (df['category'] == top_cat)]
+    ch_s  = top_ch.split('/')[0].strip()
+    cat_s = top_cat.split('/')[0].strip()
+    if '小红书' in ch_s:
+        note = '该路径发生在开放平台，问题可见度高，建议提高响应优先级并在评论区主动引导私信'
+    elif '微信群' in ch_s:
+        note = '群内高频问题若积压可能引发集体不满，建议排查根本原因并统一回复'
+    else:
+        note = '优化该路径的标准应答模板可大幅提升整体响应效率'
+    return f'最高频路径：<b>{ch_s} → {cat_s}</b>（<b>{len(flow)}</b> 条）。{note}。'
 
 
 def insight_trend(df):
@@ -149,31 +148,15 @@ def insight_trend(df):
     diff = last - prev
     if diff > 0:
         direction = f'上升 <b>+{diff}</b> 条'
-        angle = '咨询量增长可能与近期推广活动或新用户涌入相关，建议核查活动节点；若非活动期则需排查产品问题'
+        angle = '咨询量增长可能与近期推广活动或新用户涌入相关，建议核查活动节点'
     elif diff < 0:
         direction = f'下降 <b>{abs(diff)}</b> 条'
-        angle = '咨询量下滑可能是内容教育有效（用户自助解决率上升），或社区活跃度下降，建议结合社媒数据交叉验证'
+        angle = '咨询量下滑可能是内容教育有效或社区活跃度下降，建议结合社媒数据交叉验证'
     else:
         direction = '持平'
         angle = '咨询量稳定，可持续观察高频问题是否被内容/产品侧逐步消化'
     peak = monthly.idxmax()
-    return (f'最近月咨询量较上月{direction}。历史峰值在 <b>{peak}</b>（{monthly.max()} 条）。{angle}。')
-
-
-def insight_channel_status(df):
-    top_ch  = df['channel'].value_counts().index[0]  if not df['channel'].value_counts().empty  else ''
-    top_cat = df['category'].value_counts().index[0] if not df['category'].value_counts().empty else ''
-    if not top_ch or not top_cat: return ''
-    flow = df[(df['channel'] == top_ch) & (df['category'] == top_cat)]
-    ch_s  = top_ch.split('/')[0].strip()
-    cat_s = top_cat.split('/')[0].strip()
-    if '小红书' in ch_s:
-        note = '该路径发生在开放平台，问题可见度高，建议提高响应优先级并在评论区主动引导私信'
-    elif '微信群' in ch_s:
-        note = '群内高频问题若积压，可能引发集体不满，建议排查根本原因并统一群内回复'
-    else:
-        note = '优化该路径的标准应答模板可大幅提升整体响应效率'
-    return (f'最高频路径：<b>{ch_s} → {cat_s}</b>（<b>{len(flow)}</b> 条）。{note}。')
+    return f'最近月咨询量较上月{direction}。历史峰值在 <b>{peak}</b>（{monthly.max()} 条）。{angle}。'
 
 
 # ── 数据加载 ──
@@ -191,7 +174,6 @@ with st.sidebar:
         date_range = None
     sel_channel  = st.multiselect('渠道 / Channel',  sorted(df_raw['channel'].dropna().unique()), default=[])
     sel_category = st.multiselect('类别 / Category', sorted(df_raw['category'].dropna().unique()), default=[])
-    sel_status   = st.multiselect('状态 / Status',   sorted(df_raw['status'].dropna().unique()),   default=[])
     st.markdown('---')
     if st.button('🔄 刷新数据 / Refresh', use_container_width=True):
         st.cache_data.clear()
@@ -203,17 +185,16 @@ if date_range and len(date_range) == 2:
     df = df[(df['date'].dt.date >= date_range[0]) & (df['date'].dt.date <= date_range[1])]
 if sel_channel:  df = df[df['channel'].isin(sel_channel)]
 if sel_category: df = df[df['category'].isin(sel_category)]
-if sel_status:   df = df[df['status'].isin(sel_status)]
 if df.empty:
     st.warning('当前筛选条件下无数据')
     st.stop()
 
 # ── KPI ──
-total     = len(df)
-resolved  = df['status'].str.contains('Resolved', na=False).sum()
-pending   = df['status'].str.contains('Pending',  na=False).sum()
-escalated = df['status'].str.contains('Escalated',na=False).sum()
-rate      = f'{resolved/total*100:.1f}%' if total else '—'
+total    = len(df)
+top_ch   = df['channel'].value_counts().index[0].split('/')[0].strip()  if not df['channel'].value_counts().empty  else '—'
+top_cat  = df['category'].value_counts().index[0].split('/')[0].strip() if not df['category'].value_counts().empty else '—'
+trend_tmp = df.dropna(subset=['date'])
+this_month_cnt = trend_tmp[trend_tmp['date'].dt.to_period('M') == pd.Timestamp.now().to_period('M')].shape[0]
 
 # ── Hero Banner ──
 st.markdown(f"""
@@ -221,10 +202,10 @@ st.markdown(f"""
   <h1>GHA 客服数据 <span class="gold">Dashboard</span></h1>
   <p>Customer Service Analytics · GHA Discovery</p>
   <div class="kpi-wrap">
-    <div class="kpi"><div class="kpi-val">{total}</div><div class="kpi-lbl">总咨询量 · Total</div></div>
-    <div class="kpi"><div class="kpi-val">{resolved}</div><div class="kpi-lbl">已解决 · Resolved</div><div class="kpi-sub">解决率 {rate}</div></div>
-    <div class="kpi"><div class="kpi-val">{pending}</div><div class="kpi-lbl">待处理 · Pending</div></div>
-    <div class="kpi"><div class="kpi-val">{escalated}</div><div class="kpi-lbl">已升级 · Escalated</div></div>
+    <div class="kpi"><div class="kpi-val">{total}</div><div class="kpi-lbl">总咨询量 · Total Inquiries</div></div>
+    <div class="kpi"><div class="kpi-val">{this_month_cnt}</div><div class="kpi-lbl">本月咨询 · This Month</div></div>
+    <div class="kpi"><div class="kpi-val">{top_ch}</div><div class="kpi-lbl">最高频渠道 · Top Channel</div></div>
+    <div class="kpi"><div class="kpi-val" style="font-size:1.2rem;padding-top:4px">{top_cat}</div><div class="kpi-lbl">最高频问题 · Top Issue</div></div>
   </div>
 </div>
 """, unsafe_allow_html=True)
@@ -287,162 +268,117 @@ with col_b:
 
 
 # ═══════════════════════════════════════
-# 板块 2：渠道 × 状态 气泡矩阵
+# 板块 2：渠道 × 类别 气泡矩阵
 # ═══════════════════════════════════════
 st.markdown('<div class="card">', unsafe_allow_html=True)
-st.markdown('<div class="card-title">Channel × Status Matrix</div><div class="card-subtitle">各渠道处理状态分布</div>', unsafe_allow_html=True)
+st.markdown('<div class="card-title">Channel × Category Matrix</div><div class="card-subtitle">各渠道问题类别分布</div>', unsafe_allow_html=True)
 
-df_cs = df.copy()
-df_cs['ch_short'] = df_cs['channel'].str.split('/').str[0].str.strip()
-df_cs['st_short'] = df_cs['status'].str.split('/').str[0].str.strip()
-df_cs = df_cs[(df_cs['ch_short'] != '') & (df_cs['st_short'] != '')]
-cs_matrix = df_cs.groupby(['ch_short', 'st_short']).size().reset_index(name='count')
-max_count = cs_matrix['count'].max() if not cs_matrix.empty else 1
+df_cc = df.copy()
+df_cc['ch_short']  = df_cc['channel'].str.split('/').str[0].str.strip()
+df_cc['cat_short'] = df_cc['category'].str.split('/').str[0].str.strip()
+df_cc = df_cc[(df_cc['ch_short'] != '') & (df_cc['cat_short'] != '')]
+cc_matrix = df_cc.groupby(['ch_short', 'cat_short']).size().reset_index(name='count')
+max_count = cc_matrix['count'].max() if not cc_matrix.empty else 1
 
+cat_colors = {s: PALETTE[i % len(PALETTE)] for i, s in enumerate(cc_matrix['cat_short'].unique())}
 fig = go.Figure(go.Scatter(
-    x=cs_matrix['ch_short'],
-    y=cs_matrix['st_short'],
+    x=cc_matrix['ch_short'],
+    y=cc_matrix['cat_short'],
     mode='markers+text',
-    text=cs_matrix['count'],
+    text=cc_matrix['count'],
     textfont=dict(size=12, color='white', family='Inter, sans-serif'),
     marker=dict(
-        size=[max(30, int(24 + c / max_count * 54)) for c in cs_matrix['count']],
-        color=[STATUS_SHORT_COLOR.get(s, NAVY) for s in cs_matrix['st_short']],
-        opacity=0.85,
+        size=[max(28, int(20 + c / max_count * 56)) for c in cc_matrix['count']],
+        color=[cat_colors.get(c, NAVY) for c in cc_matrix['cat_short']],
+        opacity=0.82,
         line=dict(width=0),
     ),
-    customdata=cs_matrix['count'],
+    customdata=cc_matrix['count'],
     hovertemplate='<b>%{x}</b> · <b>%{y}</b><br>数量: %{customdata} 条<extra></extra>',
 ))
 fig.update_layout(
     paper_bgcolor='white', plot_bgcolor='white',
-    margin=dict(l=0, r=0, t=8, b=20), height=280,
+    margin=dict(l=0, r=0, t=8, b=20), height=320,
     xaxis=dict(tickfont=dict(size=11), showgrid=True, gridcolor='#F0F0F0', zeroline=False),
     yaxis=dict(tickfont=dict(size=11), showgrid=True, gridcolor='#F0F0F0', zeroline=False),
     showlegend=False,
 )
 st.plotly_chart(fig, use_container_width=True)
-st.markdown(f'<div class="insight">💡 {insight_channel_status(df)}</div>', unsafe_allow_html=True)
+st.markdown(f'<div class="insight">💡 {insight_ch_cat(df)}</div>', unsafe_allow_html=True)
 st.markdown('</div>', unsafe_allow_html=True)
 
 
 # ═══════════════════════════════════════
-# 板块 3：各类别解决率 + 趋势（切换）
+# 板块 3：趋势（切换：每月新增 / 累计）
 # ═══════════════════════════════════════
-col_c, col_d = st.columns([2, 3], gap='medium')
+trend = df.dropna(subset=['date']).copy()
+trend['month'] = trend['date'].dt.to_period('M').astype(str)
+monthly_total = trend.groupby('month').size().reset_index(name='count')
+monthly_total['cumulative'] = monthly_total['count'].cumsum()
 
-with col_c:
+trend_mode = st.radio(
+    '', options=['📅 每月新增', '📈 累计总量'],
+    horizontal=True, label_visibility='collapsed', key='trend_mode',
+)
+
+if trend_mode == '📅 每月新增':
     st.markdown('<div class="card">', unsafe_allow_html=True)
-    st.markdown('<div class="card-title">Resolution Rate by Category</div><div class="card-subtitle">各类别解决率</div>', unsafe_allow_html=True)
-    df_res = df.copy()
-    df_res['cat_short'] = df_res['category'].str.split('/').str[0].str.strip()
-    df_res['resolved']  = df_res['status'].str.contains('Resolved|已解决', na=False)
-    res_df = df_res.groupby('cat_short').agg(total=('resolved','count'), resolved=('resolved','sum')).reset_index()
-    res_df['rate'] = (res_df['resolved'] / res_df['total'] * 100).round(1)
-    res_df = res_df[res_df['cat_short'] != ''].sort_values('rate', ascending=True)
-    bar_colors = [GREEN if r >= 70 else GOLD if r >= 40 else CORAL for r in res_df['rate']]
-    fig = go.Figure(go.Bar(
-        y=res_df['cat_short'], x=res_df['rate'], orientation='h',
-        marker_color=bar_colors, marker_line_width=0,
-        text=[f"{r}%  ({v}条)" for r, v in zip(res_df['rate'], res_df['total'])],
-        textposition='outside', textfont=dict(size=10),
-        hovertemplate='%{y}<br>解决率: <b>%{x}%</b><extra></extra>',
+    st.markdown('<div class="card-title">Monthly New Inquiries</div><div class="card-subtitle">每月新增咨询量</div>', unsafe_allow_html=True)
+    fig1 = go.Figure()
+    fig1.add_trace(go.Bar(
+        x=monthly_total['month'], y=monthly_total['count'],
+        name='月新增', marker_color=BLUE, marker_line_width=0,
+        hovertemplate='%{x}<br>新增: <b>%{y}</b> 条<extra></extra>',
     ))
-    fig.add_vline(x=70, line_dash='dash', line_color='#ccc', line_width=1.5,
-                  annotation_text='70%', annotation_position='top right',
-                  annotation_font=dict(size=9, color='#aaa'))
-    fig.update_layout(
+    fig1.add_trace(go.Scatter(
+        x=monthly_total['month'], y=monthly_total['count'],
+        mode='lines+markers+text', name='月总计',
+        text=monthly_total['count'],
+        textposition='top center', textfont=dict(size=10, color=NAVY),
+        line=dict(color=NAVY, width=2, dash='dot'), marker=dict(color=NAVY, size=5),
+    ))
+    fig1.update_layout(
         plot_bgcolor='white', paper_bgcolor='white',
-        margin=dict(l=0, r=70, t=8, b=0), height=300,
-        xaxis=dict(range=[0, 115], showgrid=True, gridcolor='#F0F0F0', ticksuffix='%'),
-        yaxis=dict(tickfont=dict(size=11)),
+        margin=dict(l=0, r=0, t=8, b=0), height=300,
+        legend=dict(orientation='h', y=-0.2, font=dict(size=9)),
+        xaxis=dict(tickangle=-20, showgrid=False, tickfont=dict(size=10)),
+        yaxis=dict(showgrid=True, gridcolor='#F0F0F0', zeroline=False),
         bargap=0.35,
     )
-    st.plotly_chart(fig, use_container_width=True)
-    low = res_df[res_df['rate'] < 70]['cat_short'].tolist()
-    low_txt = '、'.join(low[:2]) if low else ''
-    insight_txt = (
-        '绿色≥70%（健康）、黄色40-70%（待改善）、红色＜40%（高风险）。'
-        + (f'<b>{low_txt}</b> 解决率偏低，未解决问题易转化为公开负评，建议重点跟进。' if low_txt else '所有类别达标，建议保持。')
-    )
-    st.markdown(f'<div class="insight">💡 {insight_txt}</div>', unsafe_allow_html=True)
+    st.plotly_chart(fig1, use_container_width=True)
+    st.markdown(f'<div class="insight">💡 {insight_trend(df)}</div>', unsafe_allow_html=True)
     st.markdown('</div>', unsafe_allow_html=True)
 
-with col_d:
-    trend = df.dropna(subset=['date']).copy()
-    trend['month'] = trend['date'].dt.to_period('M').astype(str)
-    monthly_total = trend.groupby('month').size().reset_index(name='count')
-    monthly_total['cumulative'] = monthly_total['count'].cumsum()
-
-    trend_mode = st.radio(
-        '', options=['📅 每月新增', '📈 累计总量'],
-        horizontal=True, label_visibility='collapsed', key='trend_mode',
+else:
+    st.markdown('<div class="card">', unsafe_allow_html=True)
+    st.markdown('<div class="card-title">Cumulative Total</div><div class="card-subtitle">累计咨询量增长</div>', unsafe_allow_html=True)
+    fig2 = go.Figure()
+    fig2.add_trace(go.Bar(
+        x=monthly_total['month'], y=monthly_total['count'],
+        name='当月新增', marker_color=BLUE, marker_line_width=0, opacity=0.35,
+        hovertemplate='%{x}<br>当月新增: <b>%{y}</b> 条<extra></extra>',
+    ))
+    fig2.add_trace(go.Scatter(
+        x=monthly_total['month'], y=monthly_total['cumulative'],
+        mode='lines+markers+text', name='累计总量',
+        text=monthly_total['cumulative'],
+        textposition='top center', textfont=dict(size=10, color=GOLD),
+        line=dict(color=GOLD, width=3),
+        marker=dict(color=GOLD, size=8, line=dict(color='white', width=2)),
+        fill='tozeroy', fillcolor='rgba(218,159,89,0.12)',
+        hovertemplate='%{x}<br>累计: <b>%{y}</b> 条<extra></extra>',
+    ))
+    fig2.update_layout(
+        barmode='overlay', plot_bgcolor='white', paper_bgcolor='white',
+        margin=dict(l=0, r=0, t=8, b=0), height=300,
+        legend=dict(orientation='h', y=-0.2, font=dict(size=9)),
+        xaxis=dict(tickangle=-20, showgrid=False, tickfont=dict(size=10)),
+        yaxis=dict(showgrid=True, gridcolor='#F0F0F0', zeroline=False),
+        bargap=0.3,
     )
-
-    if trend_mode == '📅 每月新增':
-        st.markdown('<div class="card">', unsafe_allow_html=True)
-        st.markdown('<div class="card-title">Monthly New Inquiries</div><div class="card-subtitle">每月新增咨询量</div>', unsafe_allow_html=True)
-        monthly_s = trend.groupby(['month', 'status']).size().reset_index(name='count')
-        pivot = monthly_s.pivot(index='month', columns='status', values='count').fillna(0)
-        fig1 = go.Figure()
-        for col_name in pivot.columns:
-            short = col_name.split('/')[0].strip()
-            color = STATUS_COLOR.get(col_name, BLUE)
-            fig1.add_trace(go.Bar(
-                name=short, x=pivot.index, y=pivot[col_name],
-                marker_color=color, marker_line_width=0,
-                hovertemplate=f'{short}<br>%{{x}}: <b>%{{y}}</b> 条<extra></extra>',
-            ))
-        total_by_month = pivot.sum(axis=1)
-        fig1.add_trace(go.Scatter(
-            x=total_by_month.index, y=total_by_month.values,
-            mode='lines+markers+text', name='月总计',
-            text=total_by_month.values.astype(int),
-            textposition='top center', textfont=dict(size=10, color=NAVY),
-            line=dict(color=NAVY, width=2, dash='dot'), marker=dict(color=NAVY, size=5),
-        ))
-        fig1.update_layout(
-            barmode='stack', plot_bgcolor='white', paper_bgcolor='white',
-            margin=dict(l=0, r=0, t=8, b=0), height=300,
-            legend=dict(orientation='h', y=-0.2, font=dict(size=9)),
-            xaxis=dict(tickangle=-20, showgrid=False, tickfont=dict(size=10)),
-            yaxis=dict(showgrid=True, gridcolor='#F0F0F0', zeroline=False),
-            bargap=0.35,
-        )
-        st.plotly_chart(fig1, use_container_width=True)
-        st.markdown(f'<div class="insight">💡 {insight_trend(df)}</div>', unsafe_allow_html=True)
-        st.markdown('</div>', unsafe_allow_html=True)
-
-    else:
-        st.markdown('<div class="card">', unsafe_allow_html=True)
-        st.markdown('<div class="card-title">Cumulative Total</div><div class="card-subtitle">累计咨询量增长</div>', unsafe_allow_html=True)
-        fig2 = go.Figure()
-        fig2.add_trace(go.Bar(
-            x=monthly_total['month'], y=monthly_total['count'],
-            name='当月新增', marker_color=BLUE, marker_line_width=0, opacity=0.35,
-            hovertemplate='%{x}<br>当月新增: <b>%{y}</b> 条<extra></extra>',
-        ))
-        fig2.add_trace(go.Scatter(
-            x=monthly_total['month'], y=monthly_total['cumulative'],
-            mode='lines+markers+text', name='累计总量',
-            text=monthly_total['cumulative'],
-            textposition='top center', textfont=dict(size=10, color=GOLD),
-            line=dict(color=GOLD, width=3),
-            marker=dict(color=GOLD, size=8, line=dict(color='white', width=2)),
-            fill='tozeroy', fillcolor='rgba(218,159,89,0.12)',
-            hovertemplate='%{x}<br>累计: <b>%{y}</b> 条<extra></extra>',
-        ))
-        fig2.update_layout(
-            barmode='overlay', plot_bgcolor='white', paper_bgcolor='white',
-            margin=dict(l=0, r=0, t=8, b=0), height=300,
-            legend=dict(orientation='h', y=-0.2, font=dict(size=9)),
-            xaxis=dict(tickangle=-20, showgrid=False, tickfont=dict(size=10)),
-            yaxis=dict(showgrid=True, gridcolor='#F0F0F0', zeroline=False),
-            bargap=0.3,
-        )
-        st.plotly_chart(fig2, use_container_width=True)
-        st.markdown(f'<div class="insight">💡 {insight_trend(df)}</div>', unsafe_allow_html=True)
-        st.markdown('</div>', unsafe_allow_html=True)
+    st.plotly_chart(fig2, use_container_width=True)
+    st.markdown(f'<div class="insight">💡 {insight_trend(df)}</div>', unsafe_allow_html=True)
+    st.markdown('</div>', unsafe_allow_html=True)
 
 
 # ═══════════════════════════════════════
@@ -476,7 +412,7 @@ if not heat.empty:
     max_pos = [(heat.index[r], heat.columns[c]) for r in range(heat.shape[0]) for c in range(heat.shape[1]) if heat.values[r][c] == max_val]
     if max_pos:
         pl, cat = max_pos[0]
-        st.markdown(f'<div class="insight">💡 <b>{pl}</b> 平台的 <b>{cat}</b> 问题最集中（<b>{int(max_val)}</b> 条）。针对该平台-问题组合定向制作解答内容，可有效减少重复咨询并提升平台口碑。</div>', unsafe_allow_html=True)
+        st.markdown(f'<div class="insight">💡 <b>{pl}</b> 平台的 <b>{cat}</b> 问题最集中（<b>{int(max_val)}</b> 条）。针对该组合定向制作解答内容，可有效减少重复咨询并提升平台口碑。</div>', unsafe_allow_html=True)
 else:
     st.info('暂无足够数据生成热力图')
 st.markdown('</div>', unsafe_allow_html=True)
@@ -529,7 +465,7 @@ with col_e:
         )
         st.plotly_chart(fig, use_container_width=True)
         top1, cnt1 = top[0]
-        st.markdown(f'<div class="insight">💡 "<b>{top1}</b>" 是最高频关键词（<b>{cnt1}</b> 次），反映用户核心诉求，可作为内容选题方向优化 SEO 与社媒触达。</div>', unsafe_allow_html=True)
+        st.markdown(f'<div class="insight">💡 "<b>{top1}</b>" 是最高频关键词（<b>{cnt1}</b> 次），反映用户核心诉求，可作为内容选题方向优化社媒触达。</div>', unsafe_allow_html=True)
     else:
         st.info('暂无关键词数据')
     st.markdown('</div>', unsafe_allow_html=True)
@@ -537,9 +473,9 @@ with col_e:
 with col_f:
     st.markdown('<div class="card">', unsafe_allow_html=True)
     st.markdown('<div class="card-title">Records</div><div class="card-subtitle">数据明细</div>', unsafe_allow_html=True)
-    show = df[['id','date','channel','category','status','description','notes']].copy()
+    show = df[['id','date','channel','category','description','notes']].copy()
     show['date'] = show['date'].dt.strftime('%Y-%m-%d')
-    show.columns = ['ID','日期/Date','渠道/Channel','类别/Category','状态/Status','描述/Desc','备注/Notes']
+    show.columns = ['ID','日期/Date','渠道/Channel','类别/Category','描述/Desc','备注/Notes']
     st.dataframe(show, use_container_width=True, height=320,
                  column_config={
                      '描述/Desc':  st.column_config.TextColumn(width='large'),
