@@ -18,10 +18,16 @@ import requests
 import streamlit as st
 
 # ── 配置（从 Streamlit secrets 读取，本地和云端通用）──
-APP_ID     = st.secrets.get('LARK_APP_ID',     os.getenv('LARK_APP_ID', ''))
-APP_SECRET = st.secrets.get('LARK_APP_SECRET', os.getenv('LARK_APP_SECRET', ''))
-APP_TOKEN  = st.secrets.get('LARK_APP_TOKEN',  os.getenv('LARK_APP_TOKEN', ''))
-TABLE_ID   = st.secrets.get('LARK_TABLE_ID',   os.getenv('LARK_TABLE_ID', ''))
+def _secret(key, fallback=''):
+    try:
+        return st.secrets[key]
+    except Exception:
+        return os.getenv(key, fallback)
+
+APP_ID     = _secret('LARK_APP_ID')
+APP_SECRET = _secret('LARK_APP_SECRET')
+APP_TOKEN  = _secret('LARK_APP_TOKEN')
+TABLE_ID   = _secret('LARK_TABLE_ID')
 BASE_URL   = 'https://open.larksuite.com/open-apis'
 
 # ── 品牌色 ──
@@ -72,9 +78,17 @@ st.markdown(f"""
 
 # ── Lark 数据加载 ──
 def get_token():
-    r = requests.post(f'{BASE_URL}/auth/v3/app_access_token/internal',
-                      json={'app_id': APP_ID, 'app_secret': APP_SECRET}, timeout=10)
-    return r.json().get('app_access_token')
+    try:
+        r = requests.post(f'{BASE_URL}/auth/v3/app_access_token/internal',
+                          json={'app_id': APP_ID, 'app_secret': APP_SECRET}, timeout=10)
+        data = r.json()
+        if data.get('code') != 0:
+            st.error(f'Lark 鉴权失败: {data.get("msg")}（请检查 Secrets 配置）')
+            st.stop()
+        return data['app_access_token']
+    except Exception as e:
+        st.error(f'无法连接 Lark API: {e}')
+        st.stop()
 
 
 def extract(value):
@@ -98,10 +112,15 @@ def load_data():
         params = {'page_size': 500}
         if page_token:
             params['page_token'] = page_token
-        resp = requests.get(
+        raw = requests.get(
             f'{BASE_URL}/bitable/v1/apps/{app_token}/tables/{table_id}/records',
             headers=headers, params=params, timeout=15,
-        ).json()
+        )
+        try:
+            resp = raw.json()
+        except Exception:
+            st.error(f'Lark 返回非 JSON 响应 (HTTP {raw.status_code}): {raw.text[:200]}')
+            st.stop()
         if resp.get('code') != 0:
             st.error(f'Lark API 错误: {resp.get("msg")}')
             return pd.DataFrame()
