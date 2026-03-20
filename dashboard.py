@@ -54,7 +54,7 @@ html, body, [class*="css"] {{ font-family: 'Inter', sans-serif; }}
 .hero {{
   background: linear-gradient(135deg, {NAVY} 0%, #2A2A5A 60%, {PURPLE} 100%);
   border-radius: 0 0 24px 24px; padding: 36px 40px 32px;
-  margin: -1rem -1rem 2rem; color: white;
+  margin: 0 -1rem 2rem; color: white;
 }}
 .hero h1 {{ font-size: 2rem; font-weight: 700; margin: 0 0 4px; color: white; }}
 .hero p  {{ font-size: 0.9rem; opacity: 0.6; margin: 0; color: white; }}
@@ -276,7 +276,7 @@ this_month_cnt = trend_tmp[trend_tmp['date'].dt.to_period('M') == pd.Timestamp.n
 # ── Hero Banner ──
 st.markdown(f"""
 <div class="hero">
-  <h1>GHA 客服数据 <span class="gold">Dashboard</span></h1>
+  <h1>{t('GHA 客服数据', 'GHA Customer Service')} <span class="gold">Dashboard</span></h1>
   <p>Customer Service Analytics · GHA Discovery</p>
   <div class="kpi-wrap">
     <div class="kpi"><div class="kpi-val">{total}</div><div class="kpi-lbl">{t('总咨询量', 'Total Inquiries')}</div></div>
@@ -514,6 +514,7 @@ with col_e:
     if all_kw:
         top = Counter(all_kw).most_common(12)
         kw_df_b = pd.DataFrame(top, columns=['keyword', 'count'])
+        kw_df_b['label'] = kw_df_b['keyword'].apply(disp)
         n = len(kw_df_b)
         cols_n = 4
         x_pos = [i % cols_n for i in range(n)]
@@ -524,7 +525,7 @@ with col_e:
         fig = go.Figure(go.Scatter(
             x=x_pos, y=y_pos,
             mode='markers+text',
-            text=kw_df_b['keyword'],
+            text=kw_df_b['label'],
             textposition='middle center',
             textfont=dict(size=11, color='white', family='Inter, sans-serif'),
             marker=dict(
@@ -546,7 +547,8 @@ with col_e:
             showlegend=False,
         )
         st.plotly_chart(fig, use_container_width=True)
-        top1, cnt1 = top[0]
+        top1_raw, cnt1 = top[0]
+        top1 = disp(top1_raw)
         insight_txt = t(
             f'"<b>{top1}</b>" 是最高频关键词（<b>{cnt1}</b> 次），反映用户核心诉求，可作为内容选题方向优化社媒触达。',
             f'"<b>{top1}</b>" is the top keyword (<b>{cnt1}</b> occurrences), reflecting core user needs and suggesting content directions for social media reach optimization.'
