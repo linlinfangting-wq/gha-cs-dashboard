@@ -77,20 +77,6 @@ st.markdown(f"""
 
 
 # ── Lark 数据加载 ──
-def get_token():
-    try:
-        r = requests.post(f'{BASE_URL}/auth/v3/app_access_token/internal',
-                          json={'app_id': APP_ID, 'app_secret': APP_SECRET}, timeout=10)
-        data = r.json()
-        if data.get('code') != 0:
-            st.error(f'Lark 鉴权失败: {data.get("msg")}（请检查 Secrets 配置）')
-            st.stop()
-        return data['app_access_token']
-    except Exception as e:
-        st.error(f'无法连接 Lark API: {e}')
-        st.stop()
-
-
 def extract(value):
     if value is None:
         return ''
@@ -101,10 +87,19 @@ def extract(value):
     return str(value) if value != '' else ''
 
 
+def _get_token():
+    r = requests.post(f'{BASE_URL}/auth/v3/app_access_token/internal',
+                      json={'app_id': APP_ID, 'app_secret': APP_SECRET}, timeout=10)
+    data = r.json()
+    if data.get('code') != 0:
+        raise RuntimeError(f'Lark 鉴权失败: {data.get("msg")}')
+    return data['app_access_token']
+
+
 @st.cache_data(ttl=300, show_spinner='正在读取 Lark 数据...')
 def load_data():
+    token = _get_token()
     app_token, table_id = APP_TOKEN, TABLE_ID
-    token = get_token()
     headers = {'Authorization': f'Bearer {token}'}
     rows, page_token = [], None
 
@@ -116,14 +111,9 @@ def load_data():
             f'{BASE_URL}/bitable/v1/apps/{app_token}/tables/{table_id}/records',
             headers=headers, params=params, timeout=15,
         )
-        try:
-            resp = raw.json()
-        except Exception:
-            st.error(f'Lark 返回非 JSON 响应 (HTTP {raw.status_code}): {raw.text[:200]}')
-            st.stop()
+        resp = raw.json()
         if resp.get('code') != 0:
-            st.error(f'Lark API 错误: {resp.get("msg")}')
-            return pd.DataFrame()
+            raise RuntimeError(f'Lark API 错误: {resp.get("msg")}')
 
         for item in resp['data']['items']:
             fld = item['fields']
@@ -157,7 +147,12 @@ def load_data():
 st.markdown(f'<h1 style="margin-bottom:0">GHA 客服数据 <span style="color:{GOLD}">Dashboard</span></h1>', unsafe_allow_html=True)
 st.markdown('<p style="color:#aaa;margin-top:2px;margin-bottom:1.5rem">Customer Service Analytics · GHA Discovery</p>', unsafe_allow_html=True)
 
-df_raw = load_data()
+try:
+    df_raw = load_data()
+except Exception as e:
+    st.error(f'数据加载失败: {e}')
+    st.stop()
+
 if df_raw.empty:
     st.warning('暂无数据')
     st.stop()
