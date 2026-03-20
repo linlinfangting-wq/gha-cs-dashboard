@@ -473,13 +473,16 @@ with col_e:
 with col_f:
     st.markdown('<div class="card">', unsafe_allow_html=True)
     st.markdown('<div class="card-title">Records</div><div class="card-subtitle">数据明细</div>', unsafe_allow_html=True)
-    show = df[['id','date','channel','category','description','notes']].sort_values('date', ascending=False).copy()
+    show = df[['id','date','channel','platform','category','subcategory','keywords','description','notes']].sort_values('date', ascending=False).copy()
     show['date'] = show['date'].dt.strftime('%Y-%m-%d')
-    show.columns = ['ID','日期/Date','渠道/Channel','类别/Category','描述/Desc','备注/Notes']
+    show.columns = ['ID','日期/Date','渠道/Channel','平台/Platform','类别/Category','子类别/Sub-cat','关键词/Keywords','描述/Description','备注/Notes']
     st.dataframe(show, use_container_width=True, height=320,
                  column_config={
-                     '描述/Desc':  st.column_config.TextColumn(width='large'),
-                     '备注/Notes': st.column_config.TextColumn(width='medium'),
+                     '描述/Description': st.column_config.TextColumn(width='large'),
+                     '备注/Notes':        st.column_config.TextColumn(width='medium'),
+                     '关键词/Keywords':   st.column_config.TextColumn(width='small'),
+                     '子类别/Sub-cat':    st.column_config.TextColumn(width='small'),
+                     '平台/Platform':     st.column_config.TextColumn(width='medium'),
                  })
     st.markdown('</div>', unsafe_allow_html=True)
 
