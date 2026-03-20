@@ -315,22 +315,23 @@ for (ch, cat), grp in df_s.groupby(['ch_short', 'cat_short']):
     if pd.notna(ch) and pd.notna(cat) and ch in node_idx and cat in node_idx:
         sources.append(node_idx[ch]); targets.append(node_idx[cat])
         values.append(len(grp)); link_colors.append('rgba(218,159,89,0.25)')
+# 状态短名 → 颜色映射
+STATUS_SHORT_COLOR = {
+    '已解决': GREEN, '处理中': GOLD, '待处理': BLUE, '已升级': CORAL
+}
 # cat → status
 for (cat, st), grp in df_s.groupby(['cat_short', 'st_short']):
     if pd.notna(cat) and pd.notna(st) and cat in node_idx and st in node_idx:
         sources.append(node_idx[cat]); targets.append(node_idx[st])
         values.append(len(grp))
-        sc = STATUS_COLOR.get(df_s[df_s['st_short'] == st]['status'].iloc[0], BLUE) if len(df_s[df_s['st_short'] == st]) else BLUE
+        sc = STATUS_SHORT_COLOR.get(str(st), BLUE)
         r, g, b = int(sc[1:3],16), int(sc[3:5],16), int(sc[5:7],16)
         link_colors.append(f'rgba({r},{g},{b},0.3)')
 
 node_colors = (
-    [GOLD]   * len(channels) +
-    [BLUE]   * len(categories) +
-    [STATUS_COLOR.get(
-        df_s[df_s['st_short'] == s]['status'].iloc[0] if len(df_s[df_s['st_short'] == s]) else '',
-        GREEN
-    ) for s in statuses]
+    [GOLD] * len(channels) +
+    [BLUE] * len(categories) +
+    [STATUS_SHORT_COLOR.get(str(s), GREEN) for s in statuses]
 )
 
 fig = go.Figure(go.Sankey(
