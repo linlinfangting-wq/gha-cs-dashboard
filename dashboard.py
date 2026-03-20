@@ -298,61 +298,55 @@ with col_b:
 st.markdown('<div class="card">', unsafe_allow_html=True)
 st.markdown('<div class="card-title">Flow Analysis</div><div class="card-subtitle">问题流向图：渠道 → 类别 → 处理状态</div>', unsafe_allow_html=True)
 
-df_s = df.copy()
-df_s['ch_short']  = df_s['channel'].str.split('/').str[0].str.strip()
-df_s['cat_short'] = df_s['category'].str.split('/').str[0].str.strip()
-df_s['st_short']  = df_s['status'].str.split('/').str[0].str.strip()
-
-channels   = df_s['ch_short'].dropna().unique().tolist()
-categories = df_s['cat_short'].dropna().unique().tolist()
-statuses   = df_s['st_short'].dropna().unique().tolist()
-all_nodes  = channels + categories + statuses
-node_idx   = {n: i for i, n in enumerate(all_nodes)}
-
-sources, targets, values, link_colors = [], [], [], []
-# ch → cat
-for (ch, cat), grp in df_s.groupby(['ch_short', 'cat_short']):
-    if pd.notna(ch) and pd.notna(cat) and ch in node_idx and cat in node_idx:
-        sources.append(node_idx[ch]); targets.append(node_idx[cat])
-        values.append(len(grp)); link_colors.append('rgba(218,159,89,0.25)')
-# 状态短名 → 颜色映射
 STATUS_SHORT_COLOR = {
     '已解决': GREEN, '处理中': GOLD, '待处理': BLUE, '已升级': CORAL
 }
-# cat → status
-for (cat, st), grp in df_s.groupby(['cat_short', 'st_short']):
-    if pd.notna(cat) and pd.notna(st) and cat in node_idx and st in node_idx:
-        sources.append(node_idx[cat]); targets.append(node_idx[st])
-        values.append(len(grp))
-        sc = STATUS_SHORT_COLOR.get(str(st), BLUE)
-        r, g, b = int(sc[1:3],16), int(sc[3:5],16), int(sc[5:7],16)
-        link_colors.append(f'rgba({r},{g},{b},0.3)')
 
-node_colors = (
-    [GOLD] * len(channels) +
-    [BLUE] * len(categories) +
-    [STATUS_SHORT_COLOR.get(str(s), GREEN) for s in statuses]
-)
+try:
+    df_s = df.copy()
+    df_s['ch_short']  = df_s['channel'].str.split('/').str[0].str.strip()
+    df_s['cat_short'] = df_s['category'].str.split('/').str[0].str.strip()
+    df_s['st_short']  = df_s['status'].str.split('/').str[0].str.strip()
+    # 过滤空值
+    df_s = df_s[(df_s['ch_short'] != '') & (df_s['cat_short'] != '') & (df_s['st_short'] != '')]
 
-fig = go.Figure(go.Sankey(
-    arrangement='snap',
-    node=dict(
-        label=all_nodes, color=node_colors,
-        pad=20, thickness=18,
-        line=dict(color='white', width=0.5),
-        hovertemplate='%{label}<br>流量: <b>%{value}</b><extra></extra>',
-    ),
-    link=dict(
-        source=sources, target=targets, value=values,
-        color=link_colors,
-        hovertemplate='%{source.label} → %{target.label}<br><b>%{value}</b> 条<extra></extra>',
-    ),
-))
-fig.update_layout(
-    paper_bgcolor='white', font=dict(size=12, color=NAVY),
-    margin=dict(l=10, r=10, t=10, b=10), height=340,
-)
-st.plotly_chart(fig, use_container_width=True)
+    channels   = df_s['ch_short'].unique().tolist()
+    categories = [c for c in df_s['cat_short'].unique() if c not in channels]
+    statuses   = [s for s in df_s['st_short'].unique() if s not in channels and s not in categories]
+    all_nodes  = channels + categories + statuses
+    node_idx   = {n: i for i, n in enumerate(all_nodes)}
+
+    sources, targets, values, link_colors = [], [], [], []
+    for (ch, cat), grp in df_s.groupby(['ch_short', 'cat_short']):
+        if ch in node_idx and cat in node_idx:
+            sources.append(node_idx[ch]); targets.append(node_idx[cat])
+            values.append(len(grp)); link_colors.append('rgba(218,159,89,0.25)')
+    for (cat, st), grp in df_s.groupby(['cat_short', 'st_short']):
+        if cat in node_idx and st in node_idx:
+            sources.append(node_idx[cat]); targets.append(node_idx[st])
+            values.append(len(grp))
+            sc = STATUS_SHORT_COLOR.get(str(st), BLUE)
+            r, g, b = int(sc[1:3],16), int(sc[3:5],16), int(sc[5:7],16)
+            link_colors.append(f'rgba({r},{g},{b},0.3)')
+
+    node_colors = (
+        [GOLD] * len(channels) +
+        [BLUE] * len(categories) +
+        [STATUS_SHORT_COLOR.get(str(s), GREEN) for s in statuses]
+    )
+
+    fig = go.Figure(go.Sankey(
+        arrangement='snap',
+        node=dict(label=all_nodes, color=node_colors, pad=20, thickness=18,
+                  line=dict(color='white', width=0.5)),
+        link=dict(source=sources, target=targets, value=values, color=link_colors),
+    ))
+    fig.update_layout(paper_bgcolor='white', font=dict(size=12, color=NAVY),
+                      margin=dict(l=10, r=10, t=10, b=10), height=340)
+    st.plotly_chart(fig, use_container_width=True)
+except Exception as e:
+    st.info(f'流向图渲染中... ({e})')
+
 st.markdown(f'<div class="insight">💡 {insight_sankey(df)}</div>', unsafe_allow_html=True)
 st.markdown('</div>', unsafe_allow_html=True)
 
