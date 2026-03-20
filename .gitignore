@@ -1,0 +1,11 @@
+# 敏感文件，不推到 GitHub
+.streamlit/secrets.toml
+.lark_bitable_token
+records.csv
+*.xlsx
+_tmp_*.png
+
+# Python
+__pycache__/
+*.pyc
+.env
