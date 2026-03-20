@@ -390,39 +390,76 @@ with col_c:
 
 with col_d:
     st.markdown('<div class="card">', unsafe_allow_html=True)
-    st.markdown('<div class="card-title">Monthly Trend</div><div class="card-subtitle">每月咨询量趋势</div>', unsafe_allow_html=True)
+
+    # 切换按钮
+    t_left, t_right = st.columns([3, 2])
+    with t_left:
+        st.markdown('<div class="card-title">Trend Analysis</div><div class="card-subtitle">咨询量趋势</div>', unsafe_allow_html=True)
+    with t_right:
+        view_mode = st.radio('', ['每月新增 / Monthly', '累计总量 / Cumulative'],
+                             horizontal=True, label_visibility='collapsed', key='trend_mode')
+
     trend = df.dropna(subset=['date']).copy()
     trend['month'] = trend['date'].dt.to_period('M').astype(str)
-    monthly = trend.groupby(['month','status']).size().reset_index(name='count')
-    pivot = monthly.pivot(index='month', columns='status', values='count').fillna(0)
 
-    fig = go.Figure()
-    for col_name in pivot.columns:
-        short = col_name.split('/')[0].strip()
-        color = STATUS_COLOR.get(col_name, BLUE)
-        r,g,b = int(color[1:3],16), int(color[3:5],16), int(color[5:7],16)
+    if '累计' in view_mode:
+        # 累计折线图
+        monthly_total = trend.groupby('month').size().reset_index(name='count')
+        monthly_total['cumulative'] = monthly_total['count'].cumsum()
+        fig = go.Figure()
         fig.add_trace(go.Bar(
-            name=short, x=pivot.index, y=pivot[col_name],
-            marker_color=color, marker_line_width=0,
-            hovertemplate=f'{short}<br>%{{x}}: <b>%{{y}}</b> 条<extra></extra>',
+            x=monthly_total['month'], y=monthly_total['count'],
+            name='当月新增', marker_color=BLUE, marker_line_width=0, opacity=0.5,
+            hovertemplate='%{x}<br>当月新增: <b>%{y}</b> 条<extra></extra>',
         ))
-    total_by_month = pivot.sum(axis=1)
-    fig.add_trace(go.Scatter(
-        x=total_by_month.index, y=total_by_month.values,
-        mode='lines+markers+text', name='总计',
-        text=total_by_month.values.astype(int),
-        textposition='top center', textfont=dict(size=11, color=NAVY),
-        line=dict(color=NAVY, width=2, dash='dot'),
-        marker=dict(color=NAVY, size=6),
-    ))
-    fig.update_layout(
-        barmode='stack', plot_bgcolor='white', paper_bgcolor='white',
-        margin=dict(l=0, r=0, t=8, b=0), height=300,
-        legend=dict(orientation='h', y=-0.15, font=dict(size=10)),
-        xaxis=dict(tickangle=-20, showgrid=False),
-        yaxis=dict(showgrid=True, gridcolor='#F0F0F0', zeroline=False),
-        bargap=0.3,
-    )
+        fig.add_trace(go.Scatter(
+            x=monthly_total['month'], y=monthly_total['cumulative'],
+            mode='lines+markers+text', name='累计总量',
+            text=monthly_total['cumulative'],
+            textposition='top center', textfont=dict(size=11, color=NAVY),
+            line=dict(color=GOLD, width=2.5),
+            marker=dict(color=GOLD, size=7),
+            hovertemplate='%{x}<br>累计: <b>%{y}</b> 条<extra></extra>',
+        ))
+        fig.update_layout(
+            barmode='overlay', plot_bgcolor='white', paper_bgcolor='white',
+            margin=dict(l=0, r=0, t=8, b=0), height=300,
+            legend=dict(orientation='h', y=-0.15, font=dict(size=10)),
+            xaxis=dict(tickangle=-20, showgrid=False),
+            yaxis=dict(showgrid=True, gridcolor='#F0F0F0', zeroline=False),
+            bargap=0.3,
+        )
+    else:
+        # 每月新增堆叠图
+        monthly = trend.groupby(['month', 'status']).size().reset_index(name='count')
+        pivot = monthly.pivot(index='month', columns='status', values='count').fillna(0)
+        fig = go.Figure()
+        for col_name in pivot.columns:
+            short = col_name.split('/')[0].strip()
+            color = STATUS_COLOR.get(col_name, BLUE)
+            fig.add_trace(go.Bar(
+                name=short, x=pivot.index, y=pivot[col_name],
+                marker_color=color, marker_line_width=0,
+                hovertemplate=f'{short}<br>%{{x}}: <b>%{{y}}</b> 条<extra></extra>',
+            ))
+        total_by_month = pivot.sum(axis=1)
+        fig.add_trace(go.Scatter(
+            x=total_by_month.index, y=total_by_month.values,
+            mode='lines+markers+text', name='月总计',
+            text=total_by_month.values.astype(int),
+            textposition='top center', textfont=dict(size=11, color=NAVY),
+            line=dict(color=NAVY, width=2, dash='dot'),
+            marker=dict(color=NAVY, size=6),
+        ))
+        fig.update_layout(
+            barmode='stack', plot_bgcolor='white', paper_bgcolor='white',
+            margin=dict(l=0, r=0, t=8, b=0), height=300,
+            legend=dict(orientation='h', y=-0.15, font=dict(size=10)),
+            xaxis=dict(tickangle=-20, showgrid=False),
+            yaxis=dict(showgrid=True, gridcolor='#F0F0F0', zeroline=False),
+            bargap=0.3,
+        )
+
     st.plotly_chart(fig, use_container_width=True)
     st.markdown(f'<div class="insight">💡 {insight_trend(df)}</div>', unsafe_allow_html=True)
     st.markdown('</div>', unsafe_allow_html=True)
