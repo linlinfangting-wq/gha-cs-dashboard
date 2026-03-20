@@ -1,85 +1,81 @@
 id,date,time,channel,platform,category,subcategory,keywords,description,assignee,notes
-1,2026-01-16,,微信,GHA英文app,需求,,"app,APP,升级,中文",app什么时候可以升级到中文,@林芳葶(Fantine),
-2,2026-01-16,,小红书,中文小程序或官网,技术bug,,"钛金,显示,中文,英文,平台",英文平台显示是钛金，中文平台显示银,@林芳葶(Fantine),已反馈给技术，问题已修复
-3,2026-01-18,,小红书,中文小程序或官网,需求,,"小程序,保级,显示",小程序没有显示3个品牌保级信息,@林芳葶(Fantine),已反馈给技术，告知用户保级依然有效，会在后期上线。
-4,2026-01-19,,微信,中文小程序或官网,需求,,"早餐,会员,钛金,功能",钛金会员免费早餐覆盖酒店功能,@林芳葶(Fantine),
-5,2026-01-21,,微信,,技术bug,,预订,预订的酒店，订单页面看不到,@林芳葶(Fantine),相似问题已解决
-6,2026-01-21,,小红书,GHA英文app,技术bug,,"app,APP,预订,回复","app预订的酒店，住宿没有被登记。
-邮件处理太慢，没有回复。",@林芳葶(Fantine),app端问题，已建议再次发邮件咨询。
-7,2026-01-22,,小红书,全平台,价格优势,,"权益,预订,会员",预订比ota贵不少，以至于可以放弃GHA会员权益,@林芳葶(Fantine),
-8,2026-01-22,,小红书,全平台,客服,,客服,希望有个客服电话,@林芳葶(Fantine),"已回复，并更新置顶评论以及自动回复：
-➡️如有中文平台相关技术问题，请在主页私信留言并提供：问题描述、出现页面/操作步骤、时间点及相关截图。我们会尽快为您处理。 ➡️订单或英文app/网站问题，请发送邮件至 contact@ghadiscovery.com ，并提供相关信息，我们的客服部门会直接处理相关事宜。"
-9,2026-01-22,,小红书,微信小程序,技术bug,,小程序,"小程序下预定，一直提示手机号不对。个人信息区手机号无法变更。
-",@林芳葶(Fantine),功能2期上线
-10,2026-01-23,,微信,GHA英文平台,技术bug,,,房晚未到账,@林芳葶(Fantine),app/英文官网端问题，已建议发邮件咨询。
-11,2026-01-23,,小红书,全平台,客服,,"客服,回复",客服回复效率低,@林芳葶(Fantine),已回复
-12,2026-01-24,,小红书,GHA英文app,技术bug,,"会员,钛金",之前一直是钛金会员，账户里也有没过期的美金余额。突然找不到账户了，所有东西全没了。,@林芳葶(Fantine),用户有两个档案，gha处理
-13,2026-01-26,,小红书,中文小程序或官网,功能,,"中文,平台",中文平台没有地道本地生活内容,@林芳葶(Fantine),已告知用户该部分内容会在后期上线。
-14,2026-01-27,,小红书,全平台,会员权益反馈,,早餐,希望增加免费早餐覆盖酒店、增加纽约的酒店,@林芳葶(Fantine),已回复
-15,2026-01-27,,微信群,微信小程序,酒店规则和数据不一致,,,酒店详情页有送早、实际没有,@林芳葶(Fantine),不是直接问询，建议作为技术检查的部分
-16,2026-01-27,,小红书,微信小程序,技术bug,,"银卡,中文,平台",全球站是白金，中文平台是银卡,@林芳葶(Fantine),"用户使用合作伙伴升级，接口信息未及时更新，当前用户问题已解决。
-还需gha优化"
-17,2026-01-28,,小红书,微信小程序,技术bug,,"小程序,预订,显示",预订成功、已收到邮件、但微信小程序订单无法显示,@林芳葶(Fantine),需要提交日志留痕@惠文博(Cutting)
-18,2026-01-09,,微信,,客服,,"客服,回复",客服回复效率低,@林芳葶(Fantine),
-19,2026-01-30,,小红书,微信小程序,技术bug,,,登陆不上,@林芳葶(Fantine),已提交技术
-20,2026-02-02,,小红书,英文app,技术bug,,"app,APP,会员",会员卡号：8494458551 JunheWu，app个人资料里设置不了邮箱,@林芳葶(Fantine),app/英文官网端问题，已建议发邮件咨询。
-21,2026-01-29,,小红书,其他,客服,,"邮件,会员,注销,信息泄露",收到GHA会员邮件但未注册，疑似他人填错邮箱；后担心信息泄露要求注销账号,@林芳葶(Fantine),引导发邮件至contact@ghadiscovery.com处理
-22,2026-02-08,,小红书,GHA英文app,客服,,"取消订单,积分,订单",酒店时间订错，因使用积分支付酒店方无法直接取消，询问处理方式,@林芳葶(Fantine),引导联系全球客服团队
-23,2026-02-10,,小红书,中文小程序或官网,客服,,"预订酒店,询价,优惠,伊斯坦布尔",咨询伊斯坦布尔宫殿酒店65折住宿优惠并询价预订,@林芳葶(Fantine),发送官网链接引导预订
-24,2026-02-12,,小红书,微信小程序,功能,,"安卓,app,小程序,奖励,安装包",询问GHA安卓安装包；另询问小程序订房是否有与app相同奖励,@林芳葶(Fantine),无明确回复记录
-25,2026-02-14,,小红书,其他,需求,,"优惠活动,最新活动,促销",询问最新优惠活动信息,@林芳葶(Fantine),发送最新活动视频及链接
-26,2026-01-30,,小红书,微信小程序,技术bug,,"登录,SQLSTATE,小程序,报错",小程序登录报错SQLSTATE[23000]: Integrity constraint violation，无法登录,@林芳葶(Fantine),已反馈技术人员
-27,2026-02-16,,小红书,其他,会员权益反馈,,"钛金,嘉佩乐,餐饮,折扣",询问钛金会员在嘉佩乐餐厅用餐是否有折扣权益,@林芳葶(Fantine),截图未见回复
-28,2026-02-21,,小红书,其他,会员权益反馈,,"825奖励金,品牌,活动规则",询问住10个品牌获825奖励金活动规则：首品牌住1晚、后续品牌各住2晚是否符合条件,@林芳葶(Fantine),未见回复
-29,2026-02-25,,小红书,GHA英文app,客服,,"修改订单,入住,退房,减少",已办理入住后希望减少一天（修改退房日期）,@林芳葶(Fantine),引导联系全球客服
-30,2026-02-26,,小红书,中文小程序或官网,技术bug,,"入住人信息,两个人,签证,填写",预订两晚酒店时平台无法填写两位入住人信息，导致无法办理签证,@林芳葶(Fantine),待技术跟进
-31,2026-02-26,,小红书,其他,客服,,"客服,咨询",点击客服按钮咨询（未提供具体问题）,@林芳葶(Fantine),触发自动回复
-32,2026-02-27,,小红书,其他,会员权益反馈,,"连续入住,两晚,订单,活动规则","询问活动连续入住两晚""规则：分开两订单预订连续两晚是否计入，还是须同一订单""",@林芳葶(Fantine),引导联系全球客服
-33,2026-03-05,,小红书,GHA英文app,会员权益反馈,,"奖励金,未到账,NH,积分",通过GHA预订NH Hua Hin（2026.2.3-6），退房后奖励金长期未到账，多次追问仍未解决,@林芳葶(Fantine),用户2026-03-11仍在追问
-34,2026-03-05,,小红书,中文小程序或官网,客服,,"预订酒店,官网",询问如何预订酒店,@林芳葶(Fantine),发送官网链接
-35,2026-03-05,,小红书,中文小程序或官网,客服,,"预订酒店,官网",两次询问如何预订酒店,@林芳葶(Fantine),发送官网链接
-36,2026-03-06,,小红书,其他,客服,,"客服,咨询",点击客服按钮（未提供具体问题）,@林芳葶(Fantine),触发自动回复
-37,2026-03-06,,小红书,GHA英文app,客服,,"补房晚,ticket,无回复,投诉",在app提交补房晚ticket后一周无回复，客服电话和邮件均无法联系，投诉客服响应效率,@林芳葶(Fantine),用户投诉激烈，需紧急跟进
-38,2026-03-11,,小红书,其他,客服,,"全球客服,联系方式,人工",询问全球客服团队联系方式及人工客服渠道,@林芳葶(Fantine),引导发邮件至contact@ghadiscovery.com
-39,2026-03-11,,小红书,GHA英文app,会员权益反馈,,"钛金,奖励金,未到账,Avani,投诉",钛金会员预订Avani Seminyak Bali（2026.2.24-25），退店14天后奖励金及美金均未到账，邮件无回复，扬言放弃GHA,@林芳葶(Fantine),高流失风险，用户情绪激烈，需紧急处理
-40,2026-03-05,,小红书,其他,客服,,"投诉,奖励金,联系方式",询问如何投诉及反馈奖励金问题，从3月初至3月16日多次追问投诉渠道,@林芳葶(Fantine),2026-03-17引导发邮件至contact@ghadiscovery.com
-41,2026-03-12,,小红书,其他,客服,,"人工客服,联系方式",询问人工客服渠道,@林芳葶(Fantine),引导发邮件至contact@ghadiscovery.com
-42,2026-03-18,,微信,其他,会员权益反馈,,"匹配会员,会员关联",询问如何匹配/关联会员账号,@林芳葶(Fantine),
-43,2026-03-18,,微信,其他,客服,,"人工客服,客服电话",询问人工客服电话联系方式（连发两条）,@林芳葶(Fantine),
-44,2026-03-15,,微信,其他,客服,,人工客服,询问人工客服渠道,@林芳葶(Fantine),
-45,2026-03-12,,微信,其他,客服,,人工客服,询问人工客服渠道,@林芳葶(Fantine),
-46,2026-03-04,,微信,其他,客服,,人工客服,询问人工客服渠道,@林芳葶(Fantine),
-47,2026-03-02,,微信,其他,客服,,"酒店联系方式,上海,凯宾斯基",询问上海凯宾斯基酒店联络邮箱,@林芳葶(Fantine),
-48,2026-02-28,,微信,其他,技术bug,,"公众号,链接,javascript",进入公众号时出现javascript:void(0)错误无法跳转,@林芳葶(Fantine),
-49,2026-02-25,,微信,GHA英文app,技术bug,,"登录,账户",账户无法登录,@林芳葶(Fantine),
-50,2026-02-19,,微信,其他,会员权益反馈,,"VISA,无限卡,匹配会员",询问VISA无限卡如何匹配关联GHA会员权益,@林芳葶(Fantine),
-51,2026-02-18,,微信,GHA英文app,技术bug,,"app,地址,修改",APP无法修改地址信息,@林芳葶(Fantine),
-52,2026-02-12,,微信,GHA英文app,需求,,"app,预订,奖励",看到用APP预订有奖励，咨询具体规则,@林芳葶(Fantine),
-53,2026-02-11,,微信,其他,需求,,"郑州,酒店,覆盖",询问郑州是否有GHA合作酒店,@林芳葶(Fantine),
-54,2026-02-06,,微信,其他,客服,,人工客服,询问是否有人工客服,@林芳葶(Fantine),
-55,2026-02-02,,微信,其他,客服,,"邮件,无回复",发送邮件后未收到回复投诉,@林芳葶(Fantine),韩语用户
-56,2026-01-30,,微信,其他,客服,,"邮件,无回复,投诉",客人和两个酒店共发了四封邮件一封都没回，强烈投诉客服响应,@林芳葶(Fantine),情绪激烈需紧急跟进
-57,2026-01-29,,微信,其他,客服,,"邮件,无回复",发送邮件几天无人回复,@林芳葶(Fantine),
-58,2026-01-24,,微信,其他,客服,,"订单,退费,扣费,修改",酒店已扣费但需重新预定2月23日，希望协助沟通酒店退回费用,@林芳葶(Fantine),
-59,2026-01-21,,微信,GHA英文app,技术bug,,"订单,不显示,预订",预订的酒店在订单页面看不到,@林芳葶(Fantine),
-60,2026-01-10,,微信,GHA英文平台,客服,,"漏计房晚,补救,联系",房晚漏计，询问如何联系补救,@林芳葶(Fantine),
-61,2026-01-09,,微信,其他,客服,,"邮件,无回复",写信三天无人回复投诉,@林芳葶(Fantine),
-62,2026-01-08,,微信,其他,会员权益反馈,,"保级,会员级别",询问如何保持会员级别,@林芳葶(Fantine),
-63,2026-01-07,,微信,其他,客服,,"电话,客服",询问是否有客服电话可以联系,@林芳葶(Fantine),
-64,2026-01-06,,微信,其他,需求,,"铂金,分享,推荐",询问如何分享GHA铂金会员权益,@林芳葶(Fantine),
-65,2025-12-30,,微信,其他,客服,,"会员,邮箱,绑定",询问帮查会员账号绑定的邮箱,@林芳葶(Fantine),
-66,2026-03-19,,小红书,其他,会员权益反馈,,"D$,奖励金,抵扣,规则",评论询问：预订赠送的D$是否可当次抵扣房费，还是需等下次使用,@林芳葶(Fantine),来源：小红书评论
-67,2026-03-19,,小红书,其他,客服,,"客服电话,投诉,无电话",评论投诉：没有客服电话，质疑集团服务体系,@林芳葶(Fantine),负面评论公开可见需及时回复
-68,2026-03-12,,小红书,其他,客服,,"联系方式,客服",评论询问如何联系客服,@林芳葶(Fantine),来源：小红书评论
-69,2026-03-09,,小红书,GHA英文app,需求,,"app,中文,银联,支持",评论询问app何时支持中文界面及银联支付,@林芳葶(Fantine),已回复将在后续维护阶段添加
-70,2026-03-09,,小红书,微信小程序,会员权益反馈,,"小程序,保级,三个品牌,30晚",评论询问小程序是否不支持三品牌保级（30晚/1.5万刀）,@林芳葶(Fantine),来源：小红书评论
-71,2026-02-27,,小红书,其他,需求,,"凯宾斯基,Minor,品牌,期待",评论：期待凯宾斯基和Minor品牌尽早加入GHA,@林芳葶(Fantine),正向反馈带品牌期待需求
-72,2026-02-26,,小红书,其他,酒店规则和数据不一致,,"凯宾斯基,未加入,品牌",评论确认凯宾斯基一直未加入GHA，对品牌覆盖表示失望,@林芳葶(Fantine),来源：小红书评论
-73,2026-02-19,,小红书,全平台,酒店规则和数据不一致,,"钛金,早餐,凯宾斯基,权益未执行",杭州凯宾斯基要求钛金会员额外付早餐费；预订也未自动关联会员等级，体验差,@林芳葶(Fantine),公开评论影响大；凯宾斯基早餐数据不一致问题
-74,2026-02-02,,小红书,其他,会员权益反馈,,"凯宾斯基,早餐,钛金",评论：凯宾斯基未提供钛金会员早餐权益，感到失望,@林芳葶(Fantine),来源：小红书评论
-75,2026-01-30,,小红书,GHA英文app,技术bug,,"D$,奖励金,无法使用,抵扣",预订时突然无法使用D$抵扣，没有抵扣选项，询问原因,@林芳葶(Fantine),来源：小红书评论
-76,2026-01-29,,小红书,其他,会员权益反馈,,"钛金,凯宾斯基,早餐,无权益",评论：钛金会员在凯宾斯基无免费早餐，不值得入住,@林芳葶(Fantine),来源：小红书评论
-77,2026-01-29,,小红书,其他,需求,,"厦门,凯宾斯基,折扣",评论急需厦门凯宾斯基折扣信息,@林芳葶(Fantine),来源：小红书评论
-78,2026-01-28,,小红书,其他,会员权益反馈,,"生日权益,50刀,体验",评论：肯定每年50刀生日权益，建议优化整体体验,@林芳葶(Fantine),正向反馈含优化建议
-79,2026-01-28,,小红书,全平台,技术bug,,"优惠码,无房,显示",在官网和app输入优惠码后均显示无房，询问原因,@林芳葶(Fantine),来源：小红书评论
-80,2026-01-28,,小红书,微信小程序,技术bug,,"订单同步,小程序,app,消失",昨日小程序订单可在app显示，今日新订单未同步到app且小程序历史订单全部消失,@林芳葶(Fantine),跨平台订单同步bug
+1,2026-01-16,,微信,GHA英文app,需求,,"app,APP,升级,中文",app什么时候可以升级到中文 / When will the app be upgraded to a Chinese interface,@林芳葶(Fantine),
+2,2026-01-16,,小红书,中文小程序或官网,技术bug,,"钛金,显示,中文,英文,平台",英文平台显示是钛金，中文平台显示银 / English platform shows Titanium but Chinese platform shows Silver,@林芳葶(Fantine),已反馈给技术，问题已修复 / Reported to tech team; issue resolved
+3,2026-01-18,,小红书,中文小程序或官网,需求,,"小程序,保级,显示",小程序没有显示3个品牌保级信息 / Mini Program not showing 3-brand tier retention info,@林芳葶(Fantine),已反馈给技术，告知用户保级依然有效，会在后期上线 / Reported to tech; user informed tier retention valid and will be added in future release
+4,2026-01-19,,微信,中文小程序或官网,需求,,"早餐,会员,钛金,功能",钛金会员免费早餐覆盖酒店功能 / Free breakfast hotel coverage feature for Titanium members,@林芳葶(Fantine),
+5,2026-01-21,,微信,,技术bug,,预订,预订的酒店，订单页面看不到 / Booked hotel not visible on orders page,@林芳葶(Fantine),相似问题已解决 / Similar issue has been resolved
+6,2026-01-21,,小红书,GHA英文app,技术bug,,"app,APP,预订,回复",app预订的酒店，住宿没有被登记。邮件处理太慢，没有回复。 / App-booked stay not registered; email support too slow with no reply,@林芳葶(Fantine),app端问题，已建议再次发邮件咨询 / App-side issue; advised to email again for support
+7,2026-01-22,,小红书,全平台,价格优势,,"权益,预订,会员","预订比OTA贵不少，以至于可以放弃GHA会员权益 / GHA booking price much higher than OTAs, considering abandoning membership",@林芳葶(Fantine),
+8,2026-01-22,,小红书,全平台,客服,,客服,希望有个客服电话 / Requesting a customer service phone number,@林芳葶(Fantine),已回复，并更新置顶评论以及自动回复 / Replied and updated pinned comment and auto-reply
+9,2026-01-22,,小红书,微信小程序,技术bug,,小程序,小程序下预定，一直提示手机号不对。个人信息区手机号无法变更。 / Booking via Mini Program prompts wrong phone number; phone cannot be changed in profile,@林芳葶(Fantine),功能2期上线 / Feature scheduled for Phase 2 release
+10,2026-01-23,,微信,GHA英文平台,技术bug,,,房晚未到账 / Night credits not credited to account,@林芳葶(Fantine),app/英文官网端问题，已建议发邮件咨询 / App/English website issue; advised to email for support
+11,2026-01-23,,小红书,全平台,客服,,"客服,回复",客服回复效率低 / Low customer service response efficiency,@林芳葶(Fantine),已回复 / Replied
+12,2026-01-24,,小红书,GHA英文app,技术bug,,"会员,钛金",之前一直是钛金会员，账户里也有没过期的美金余额。突然找不到账户了，所有东西全没了。 / Was longtime Titanium member with unexpired USD balance; account suddenly disappeared with everything gone,@林芳葶(Fantine),用户有两个档案，GHA处理 / User has two profiles; GHA handling
+13,2026-01-26,,小红书,中文小程序或官网,功能,,"中文,平台",中文平台没有地道本地生活内容 / Chinese platform lacks authentic local lifestyle content,@林芳葶(Fantine),已告知用户该部分内容会在后期上线 / User informed content will be added in future release
+14,2026-01-27,,小红书,全平台,会员权益反馈,,早餐,希望增加免费早餐覆盖酒店、增加纽约的酒店 / Requesting expanded free breakfast hotels and addition of NYC hotels,@林芳葶(Fantine),已回复 / Replied
+15,2026-01-27,,微信群,微信小程序,酒店规则和数据不一致,,,酒店详情页有送早、实际没有 / Hotel detail page shows complimentary breakfast but hotel does not honor it,@林芳葶(Fantine),不是直接问询，建议作为技术检查的部分 / Not a direct inquiry; flagged for technical inspection
+16,2026-01-27,,小红书,微信小程序,技术bug,,"银卡,中文,平台",全球站是白金，中文平台是银卡 / Global site shows Platinum but Chinese platform shows Silver,@林芳葶(Fantine),用户使用合作伙伴升级，接口信息未及时更新，当前用户问题已解决，还需GHA优化 / Partner upgrade used; interface not updated in time; user issue resolved; GHA optimization still needed
+17,2026-01-28,,小红书,微信小程序,技术bug,,"小程序,预订,显示",预订成功、已收到邮件、但微信小程序订单无法显示 / Booking successful and email received but order not showing in Mini Program,@林芳葶(Fantine),需要提交日志留痕 / Need to submit log for record-keeping
+18,2026-01-09,,微信,,客服,,"客服,回复",客服回复效率低 / Low customer service response efficiency,@林芳葶(Fantine),
+19,2026-01-30,,小红书,微信小程序,技术bug,,,登陆不上 / Unable to log in,@林芳葶(Fantine),已提交技术 / Submitted to tech team
+20,2026-02-02,,小红书,英文app,技术bug,,"app,APP,会员",会员卡号8494458551 JunheWu，app个人资料里设置不了邮箱 / Membership ID 8494458551 JunheWu; unable to set email in app profile,@林芳葶(Fantine),app/英文官网端问题，已建议发邮件咨询 / App/English website issue; advised to email for support
+21,2026-01-29,,小红书,其他,客服,,"邮件,会员,注销,信息泄露",收到GHA会员邮件但未注册，疑似他人填错邮箱；后担心信息泄露要求注销账号 / Received GHA membership email without registering; suspected wrong email by others; requested account deletion over privacy concerns,@林芳葶(Fantine),引导发邮件至contact@ghadiscovery.com处理 / Directed to email contact@ghadiscovery.com
+22,2026-02-08,,小红书,GHA英文app,客服,,"取消订单,积分,订单",酒店时间订错，因使用积分支付酒店方无法直接取消，询问处理方式 / Booking date wrong; hotel cannot cancel due to points payment; asking for resolution,@林芳葶(Fantine),引导联系全球客服团队 / Directed to contact global customer service team
+23,2026-02-10,,小红书,中文小程序或官网,客服,,"预订酒店,询价,优惠,伊斯坦布尔",咨询伊斯坦布尔宫殿酒店65折住宿优惠并询价预订 / Inquiring about 35% off rate at Istanbul palace hotel and requesting booking info,@林芳葶(Fantine),发送官网链接引导预订 / Sent official website link to guide booking
+24,2026-02-12,,小红书,微信小程序,功能,,"安卓,app,小程序,奖励,安装包",询问GHA安卓安装包；另询问小程序订房是否有与app相同奖励 / Requesting GHA Android APK; asking whether Mini Program bookings earn same rewards as app,@林芳葶(Fantine),无明确回复记录 / No clear reply on record
+25,2026-02-14,,小红书,其他,需求,,"优惠活动,最新活动,促销",询问最新优惠活动信息 / Requesting information on latest promotions,@林芳葶(Fantine),发送最新活动视频及链接 / Sent latest promotion video and link
+26,2026-01-30,,小红书,微信小程序,技术bug,,"登录,SQLSTATE,小程序,报错",小程序登录报错SQLSTATE[23000]: Integrity constraint violation，无法登录 / Mini Program login error: SQLSTATE[23000] Integrity constraint violation; unable to log in,@林芳葶(Fantine),已反馈技术人员 / Reported to tech team
+27,2026-02-16,,小红书,其他,会员权益反馈,,"钛金,嘉佩乐,餐饮,折扣",询问钛金会员在嘉佩乐餐厅用餐是否有折扣权益 / Asking whether Titanium member dining discount applies at Capella restaurant,@林芳葶(Fantine),截图未见回复 / No reply visible in screenshot
+28,2026-02-21,,小红书,其他,会员权益反馈,,"825奖励金,品牌,活动规则",询问住10个品牌获825奖励金活动规则 / Asking about 825 D$ reward promotion rules for staying at 10 brands,@林芳葶(Fantine),未见回复 / No reply found
+29,2026-02-25,,小红书,GHA英文app,客服,,"修改订单,入住,退房,减少",已办理入住后希望减少一天（修改退房日期）/ Requesting to reduce stay by one day (modify check-out) after check-in,@林芳葶(Fantine),引导联系全球客服 / Directed to contact global customer service
+30,2026-02-26,,小红书,中文小程序或官网,技术bug,,"入住人信息,两个人,签证,填写","预订两晚酒店时平台无法填写两位入住人信息，导致无法办理签证 / Platform cannot add two guests when booking, preventing visa application",@林芳葶(Fantine),待技术跟进 / Pending tech follow-up
+31,2026-02-26,,小红书,其他,客服,,"客服,咨询",点击客服按钮咨询（未提供具体问题）/ Clicked customer service button with no specific question,@林芳葶(Fantine),触发自动回复 / Triggered auto-reply
+32,2026-02-27,,小红书,其他,会员权益反馈,,"连续入住,两晚,订单,活动规则",询问活动连续入住两晚规则：分开两订单预订连续两晚是否计入 / Asking if 2-night promotion counts for two separate bookings or requires single reservation,@林芳葶(Fantine),引导联系全球客服 / Directed to contact global customer service
+33,2026-03-05,,小红书,GHA英文app,会员权益反馈,,"奖励金,未到账,NH,积分",通过GHA预订NH Hua Hin退房后奖励金长期未到账，多次追问仍未解决 / Booked NH Hua Hin via GHA; rewards not credited after checkout despite multiple follow-ups,@林芳葶(Fantine),用户2026-03-11仍在追问 / User still following up as of 2026-03-11
+34,2026-03-05,,小红书,中文小程序或官网,客服,,"预订酒店,官网",询问如何预订酒店 / Inquiring how to make a hotel booking,@林芳葶(Fantine),发送官网链接 / Sent official website link
+35,2026-03-05,,小红书,中文小程序或官网,客服,,"预订酒店,官网",两次询问如何预订酒店 / Inquired twice how to make a hotel booking,@林芳葶(Fantine),发送官网链接 / Sent official website link
+36,2026-03-06,,小红书,其他,客服,,"客服,咨询",点击客服按钮（未提供具体问题）/ Clicked customer service button with no specific question,@林芳葶(Fantine),触发自动回复 / Triggered auto-reply
+37,2026-03-06,,小红书,GHA英文app,客服,,"补房晚,ticket,无回复,投诉",在app提交补房晚ticket后一周无回复，投诉客服响应效率 / No response for one week after submitting night credit claim; complaining about response efficiency,@林芳葶(Fantine),用户投诉激烈，需紧急跟进 / Strong complaint; urgent follow-up required
+38,2026-03-11,,小红书,其他,客服,,"全球客服,联系方式,人工",询问全球客服团队联系方式及人工客服渠道 / Requesting global customer service contact info and human support channels,@林芳葶(Fantine),引导发邮件至contact@ghadiscovery.com / Directed to email contact@ghadiscovery.com
+39,2026-03-11,,小红书,GHA英文app,会员权益反馈,,"钛金,奖励金,未到账,Avani,投诉",钛金会员预订Avani Seminyak Bali退店14天后奖励金及美金均未到账，邮件无回复，扬言放弃GHA / Titanium member: rewards and USD not credited 14 days after checkout at Avani Seminyak Bali; no email reply; threatening to leave GHA,@林芳葶(Fantine),高流失风险，用户情绪激烈，需紧急处理 / High churn risk; user very upset; urgent handling required
+40,2026-03-05,,小红书,其他,客服,,"投诉,奖励金,联系方式",询问如何投诉及反馈奖励金问题，多次追问投诉渠道 / Repeatedly asking about complaint channel for rewards issue from early to mid March,@林芳葶(Fantine),2026-03-17引导发邮件至contact@ghadiscovery.com / Directed to email contact@ghadiscovery.com on 2026-03-17
+41,2026-03-12,,小红书,其他,客服,,"人工客服,联系方式",询问人工客服渠道 / Inquiring about human customer service channels,@林芳葶(Fantine),引导发邮件至contact@ghadiscovery.com / Directed to email contact@ghadiscovery.com
+42,2026-03-18,,微信,其他,会员权益反馈,,"匹配会员,会员关联",询问如何匹配/关联会员账号 / Asking how to match or link membership account,@林芳葶(Fantine),
+43,2026-03-18,,微信,其他,客服,,"人工客服,客服电话",询问人工客服电话联系方式（连发两条）/ Requesting human customer service phone number (sent twice),@林芳葶(Fantine),
+44,2026-03-15,,微信,其他,客服,,人工客服,询问人工客服渠道 / Inquiring about human customer service channels,@林芳葶(Fantine),
+45,2026-03-12,,微信,其他,客服,,人工客服,询问人工客服渠道 / Inquiring about human customer service channels,@林芳葶(Fantine),
+46,2026-03-04,,微信,其他,客服,,人工客服,询问人工客服渠道 / Inquiring about human customer service channels,@林芳葶(Fantine),
+47,2026-03-02,,微信,其他,客服,,"酒店联系方式,上海,凯宾斯基",询问上海凯宾斯基酒店联络邮箱 / Requesting contact email for Kempinski Hotel Shanghai,@林芳葶(Fantine),
+48,2026-02-28,,微信,其他,技术bug,,"公众号,链接,javascript",进入公众号时出现javascript:void(0)错误无法跳转 / javascript:void(0) error when accessing WeChat OA; unable to navigate,@林芳葶(Fantine),
+49,2026-02-25,,微信,GHA英文app,技术bug,,"登录,账户",账户无法登录 / Unable to log in to account,@林芳葶(Fantine),
+50,2026-02-19,,微信,其他,会员权益反馈,,"VISA,无限卡,匹配会员",询问VISA无限卡如何匹配关联GHA会员权益 / Asking how to link Visa Infinite card with GHA membership benefits,@林芳葶(Fantine),
+51,2026-02-18,,微信,GHA英文app,技术bug,,"app,地址,修改",APP无法修改地址信息 / Unable to modify address information in app,@林芳葶(Fantine),
+52,2026-02-12,,微信,GHA英文app,需求,,"app,预订,奖励",看到用APP预订有奖励，咨询具体规则 / Saw app booking reward promotion; inquiring about specific terms,@林芳葶(Fantine),
+53,2026-02-11,,微信,其他,需求,,"郑州,酒店,覆盖",询问郑州是否有GHA合作酒店 / Asking whether GHA has partner hotels in Zhengzhou,@林芳葶(Fantine),
+54,2026-02-06,,微信,其他,客服,,人工客服,询问是否有人工客服 / Asking if human customer service is available,@林芳葶(Fantine),
+55,2026-02-02,,微信,其他,客服,,"邮件,无回复",发送邮件后未收到回复投诉 / Complaint about no reply after sending email,@林芳葶(Fantine),韩语用户 / Korean-speaking user
+56,2026-01-30,,微信,其他,客服,,"邮件,无回复,投诉",客人和两个酒店共发了四封邮件一封都没回，强烈投诉客服响应 / Guest sent four emails to GHA and two hotels with no replies; strong complaint about customer service,@林芳葶(Fantine),情绪激烈需紧急跟进 / Very upset; urgent follow-up required
+57,2026-01-29,,微信,其他,客服,,"邮件,无回复",发送邮件几天无人回复 / No reply for several days after sending email,@林芳葶(Fantine),
+58,2026-01-24,,微信,其他,客服,,"订单,退费,扣费,修改",酒店已扣费但需重新预定，希望协助沟通酒店退回费用 / Hotel charged but needs rebook; requesting help to get refund from hotel,@林芳葶(Fantine),
+59,2026-01-21,,微信,GHA英文app,技术bug,,"订单,不显示,预订",预订的酒店在订单页面看不到 / Booked hotel not visible on orders page,@林芳葶(Fantine),
+60,2026-01-10,,微信,GHA英文平台,客服,,"漏计房晚,补救,联系",房晚漏计，询问如何联系补救 / Missing night credits; asking how to contact for resolution,@林芳葶(Fantine),
+61,2026-01-09,,微信,其他,客服,,"邮件,无回复",写信三天无人回复投诉 / Filed complaint: no reply for three days after writing,@林芳葶(Fantine),
+62,2026-01-08,,微信,其他,会员权益反馈,,"保级,会员级别",询问如何保持会员级别 / Asking how to maintain membership tier,@林芳葶(Fantine),
+63,2026-01-07,,微信,其他,客服,,"电话,客服",询问是否有客服电话可以联系 / Asking whether there is a customer service phone number,@林芳葶(Fantine),
+64,2026-01-06,,微信,其他,需求,,"铂金,分享,推荐",询问如何分享GHA铂金会员权益 / Asking how to share GHA Platinum membership benefits,@林芳葶(Fantine),
+65,2025-12-30,,微信,其他,客服,,"会员,邮箱,绑定",询问帮查会员账号绑定的邮箱 / Requesting help to check email linked to membership account,@林芳葶(Fantine),
+66,2026-03-19,,小红书,其他,会员权益反馈,,"D$,奖励金,抵扣,规则",评论询问：预订赠送的D$是否可当次抵扣房费，还是需等下次使用 / Comment: asking whether D$ from booking can offset current stay or must be saved for next time,@林芳葶(Fantine),来源：小红书评论 / Source: Xiaohongshu comment
+67,2026-03-19,,小红书,其他,客服,,"客服电话,投诉,无电话",评论投诉：没有客服电话，质疑集团服务体系 / Comment complaint: no customer service phone number; questioning group's service infrastructure,@林芳葶(Fantine),负面评论公开可见需及时回复 / Negative comment publicly visible; prompt response required
+68,2026-03-12,,小红书,其他,客服,,"联系方式,客服",评论询问如何联系客服 / Comment asking how to contact customer service,@林芳葶(Fantine),来源：小红书评论 / Source: Xiaohongshu comment
+69,2026-03-09,,小红书,GHA英文app,需求,,"app,中文,银联,支持",评论询问app何时支持中文界面及银联支付 / Comment asking when app will support Chinese interface and UnionPay,@林芳葶(Fantine),已回复将在后续维护阶段添加 / Replied that it will be added in future maintenance phase
+70,2026-03-09,,小红书,微信小程序,会员权益反馈,,"小程序,保级,三个品牌,30晚","评论询问小程序是否不支持三品牌保级（30晚/1.5万刀）/ Comment asking whether Mini Program supports 3-brand tier retention (30 nights / USD 15,000)",@林芳葶(Fantine),来源：小红书评论 / Source: Xiaohongshu comment
+71,2026-02-27,,小红书,其他,需求,,"凯宾斯基,Minor,品牌,期待",评论：期待凯宾斯基和Minor品牌尽早加入GHA / Comment: hoping Kempinski and Minor brands join GHA soon,@林芳葶(Fantine),正向反馈带品牌期待需求 / Positive feedback with brand expectation requests
+72,2026-02-26,,小红书,其他,酒店规则和数据不一致,,"凯宾斯基,未加入,品牌",评论确认凯宾斯基一直未加入GHA，对品牌覆盖表示失望 / Comment confirming Kempinski has not joined GHA; expressing disappointment over brand coverage,@林芳葶(Fantine),来源：小红书评论 / Source: Xiaohongshu comment
+73,2026-02-19,,小红书,全平台,酒店规则和数据不一致,,"钛金,早餐,凯宾斯基,权益未执行",杭州凯宾斯基要求钛金会员额外付早餐费；预订也未自动关联会员等级，体验差 / Hangzhou Kempinski charged Titanium member extra for breakfast; booking not auto-linked to membership tier; poor experience,@林芳葶(Fantine),公开评论影响大；凯宾斯基早餐数据不一致问题 / High visibility public comment; Kempinski breakfast data inconsistency issue
+74,2026-02-02,,小红书,其他,会员权益反馈,,"凯宾斯基,早餐,钛金",评论：凯宾斯基未提供钛金会员早餐权益，感到失望 / Comment: Kempinski did not honor Titanium breakfast benefit; expressing disappointment,@林芳葶(Fantine),来源：小红书评论 / Source: Xiaohongshu comment
+75,2026-01-30,,小红书,GHA英文app,技术bug,,"D$,奖励金,无法使用,抵扣",预订时突然无法使用D$抵扣，没有抵扣选项，询问原因 / Suddenly unable to use D$ offset during booking; no offset option available; asking for reason,@林芳葶(Fantine),来源：小红书评论 / Source: Xiaohongshu comment
+76,2026-01-29,,小红书,其他,会员权益反馈,,"钛金,凯宾斯基,早餐,无权益",评论：钛金会员在凯宾斯基无免费早餐，不值得入住 / Comment: no free breakfast as Titanium member at Kempinski; not worth staying,@林芳葶(Fantine),来源：小红书评论 / Source: Xiaohongshu comment
+77,2026-01-29,,小红书,其他,需求,,"厦门,凯宾斯基,折扣",评论急需厦门凯宾斯基折扣信息 / Comment urgently requesting discount info for Kempinski Xiamen,@林芳葶(Fantine),来源：小红书评论 / Source: Xiaohongshu comment
+78,2026-01-28,,小红书,其他,会员权益反馈,,"生日权益,50刀,体验",评论：肯定每年50刀生日权益，建议优化整体体验 / Comment: appreciating annual USD 50 birthday credit; suggesting overall experience improvements,@林芳葶(Fantine),正向反馈含优化建议 / Positive feedback with improvement suggestions
+79,2026-01-28,,小红书,全平台,技术bug,,"优惠码,无房,显示",在官网和app输入优惠码后均显示无房，询问原因 / Promo code shows no availability on website and app; asking for reason,@林芳葶(Fantine),来源：小红书评论 / Source: Xiaohongshu comment
+80,2026-01-28,,小红书,微信小程序,技术bug,,"订单同步,小程序,app,消失",昨日小程序订单可在app显示，今日新订单未同步到app且小程序历史订单全部消失 / Yesterday Mini Program orders showed in app; today new order not synced and all historical Mini Program orders disappeared,@林芳葶(Fantine),跨平台订单同步bug / Cross-platform order sync bug
