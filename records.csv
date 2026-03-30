@@ -79,3 +79,14 @@ id,date,time,channel,platform,category,subcategory,keywords,description,assignee
 78,2026-01-28,,小红书,其他,会员权益反馈,,"生日权益 / Birthday Benefit, 50刀 / $50, 体验 / Experience",评论：肯定每年50刀生日权益，建议优化整体体验 / Comment: appreciating annual USD 50 birthday credit; suggesting overall experience improvements,@林芳葶(Fantine),正向反馈含优化建议 / Positive feedback with improvement suggestions
 79,2026-01-28,,小红书,全平台,技术bug,,"优惠码 / Promo Code, 无房 / No Availability, 显示 / Display",在官网和app输入优惠码后均显示无房，询问原因 / Promo code shows no availability on website and app; asking for reason,@林芳葶(Fantine),来源：小红书评论 / Source: Xiaohongshu comment
 80,2026-01-28,,小红书,微信小程序,技术bug,,"订单同步 / Booking Sync, 小程序 / Mini Program, app, 消失 / Disappeared",昨日小程序订单可在app显示，今日新订单未同步到app且小程序历史订单全部消失 / Yesterday Mini Program orders showed in app; today new order not synced and all historical Mini Program orders disappeared,@林芳葶(Fantine),跨平台订单同步bug / Cross-platform order sync bug
+81,2026-03-27,,小红书,其他,功能,活动规则,"活动 / Campaign, 叠加 / Stackable, 预订 / Booking, 权益 / Benefits",询问去年12月注册的活动是否适用于5月订房，以及能否与其他活动叠加,,评论可见，需优先回复
+82,2026-03-21,,小红书,其他,会员权益反馈,入住记录,"入住记录 / Stay Record, 积分 / Points, 年度计算 / Annual Reset",询问去年入住两个品牌后当前积分/入住记录显示为0的原因，疑为年度重置,,评论可见，需优先回复
+83,2026-03-18,,小红书,其他,客服,人工客服,"客服电话 / Customer Hotline, 投诉 / Complaint",投诉平台无客服电话，质疑集团服务能力,,评论可见，需优先回复；负面评论
+84,2026-03-27,20:39,小红书,微信小程序,客服,订单取消,"订单取消 / Order Cancellation, 错误预订 / Wrong Booking, 钛金 / Titanium",请求协助取消错误预订的吉隆坡酒店订单,,订单号95396SG000462，TITANIUM会员，2026-04-26入住2晚，已附订单截图
+85,2026-03-27,20:45,小红书,微信小程序,技术bug,小程序崩溃,"小程序 / Mini Program, 无法使用 / Unavailable",反映小程序无法使用,,与订单取消请求（ID84）同一对话
+86,2026-03-27,,小红书,其他,价格优势,餐饮折扣,"钛金 / Titanium, 嘉佩乐 / Capella, 折扣 / Discount, 餐饮 / Dining",询问钛金会员在嘉佩乐酒店餐厅是否享有折扣,,
+87,2026-03-27,17:02,小红书,微信小程序,技术bug,预订表单,"邮箱 / Email, 填写 / Form, 预订 / Booking, 技术故障 / Technical Issue",反映预订页面邮箱字段无法填写,,预订南京凯宾斯基，DISCOVERY Preferential Member Rate
+88,2026-03-24,13:51,小红书,GHA英文app,功能,app下载,"安卓 / Android, app下载 / App Download, 客服 / Support",询问安卓手机如何下载GHA app,,
+89,2026-03-05,15:57,小红书,其他,客服,投诉处理,"投诉 / Complaint, 客服 / Support, 联系方式 / Contact",请求投诉渠道，询问如何提交投诉,,用户持续追问（3-05至3-20），已回复发邮件至contact@ghadiscovery.com；疑为港台繁体用户
+90,2026-03-19,23:29,小红书,GHA英文app,功能,D$使用,"D$, 支付 / Payment, 预订 / Booking, 英文平台 / English Platform",询问英文平台预订时如何使用D$支付，未找到D$抵扣入口,,客服回复D$支付功能将后续上线；已回复
+91,2026-03-12,12:00,小红书,其他,客服,人工客服,"人工客服 / Human Agent, 客服 / Support",请求人工客服,,
