@@ -60,11 +60,11 @@ id,date,time,channel,platform,category,subcategory,keywords,description,notes
 59,2026-02-27,,小红书,其他,会员权益反馈,,"连续入住 / Consecutive Stays, 两晚 / 2 Nights, 订单 / Booking, 活动规则 / Promo Rules",询问活动连续入住两晚规则：分开两订单预订连续两晚是否计入 / Asking if 2-night promotion counts for two separate bookings or requires single reservation,引导联系全球客服 / Directed to contact global customer service
 60,2026-02-28,,微信,其他,技术bug,,"公众号 / WeChat Official, 链接 / Link, javascript",进入公众号时出现javascript:void(0)错误无法跳转 / javascript:void(0) error when accessing WeChat OA; unable to navigate,
 61,2026-03-02,,微信,其他,客服,,"酒店联系方式 / Hotel Contact, 上海 / Shanghai, 凯宾斯基 / Kempinski",询问上海凯宾斯基酒店联络邮箱 / Requesting contact email for Kempinski Hotel Shanghai,
-62,2026-03-04,16:18,微信,其他,客服,人工客服,"人工客服 / Human Agent, 客服 / Support",请求人工客服,
+62,2026-03-04,16:18,微信,其他,客服,人工客服,"人工客服 / Human Agent, 客服 / Support",请求人工客服 / Requesting human customer service,
 63,2026-03-04,,微信,其他,客服,,人工客服 / Human Support,询问人工客服渠道 / Inquiring about human customer service channels,
 64,2026-03-05,,小红书,中文小程序或官网,客服,,"预订酒店 / Hotel Booking, 官网 / Website",询问如何预订酒店 / Inquiring how to make a hotel booking,发送官网链接 / Sent official website link
 65,2026-03-05,,小红书,其他,客服,,"投诉 / Complaint, 奖励金 / Reward Points, 联系方式 / Contact Info",询问如何投诉及反馈奖励金问题，多次追问投诉渠道 / Repeatedly asking about complaint channel for rewards issue from early to mid March,2026-03-17引导发邮件至contact@ghadiscovery.com / Directed to email contact@ghadiscovery.com on 2026-03-17
-66,2026-03-05,15:57,小红书,其他,客服,投诉处理,"投诉 / Complaint, 客服 / Support, 联系方式 / Contact",请求投诉渠道，询问如何提交投诉,用户持续追问（3-05至3-20），已回复发邮件至contact@ghadiscovery.com；疑为港台繁体用户
+66,2026-03-05,15:57,小红书,其他,客服,投诉处理,"投诉 / Complaint, 客服 / Support, 联系方式 / Contact",请求投诉渠道，询问如何提交投诉 / Requesting complaint channel and how to submit a complaint,用户持续追问（3-05至3-20），已回复发邮件至contact@ghadiscovery.com；疑为港台繁体用户
 67,2026-03-05,,小红书,GHA英文app,会员权益反馈,,"奖励金 / Reward Points, 未到账 / Not Credited, NH, 积分 / Points",通过GHA预订NH Hua Hin退房后奖励金长期未到账，多次追问仍未解决 / Booked NH Hua Hin via GHA; rewards not credited after checkout despite multiple follow-ups,用户2026-03-11仍在追问 / User still following up as of 2026-03-11
 68,2026-03-05,,小红书,中文小程序或官网,客服,,"预订酒店 / Hotel Booking, 官网 / Website",两次询问如何预订酒店 / Inquired twice how to make a hotel booking,发送官网链接 / Sent official website link
 69,2026-03-06,,小红书,GHA英文app,客服,,"补房晚 / Add Nights, ticket, 无回复 / No Response, 投诉 / Complaint",在app提交补房晚ticket后一周无回复，投诉客服响应效率 / No response for one week after submitting night credit claim; complaining about response efficiency,用户投诉激烈，需紧急跟进 / Strong complaint; urgent follow-up required
@@ -73,36 +73,36 @@ id,date,time,channel,platform,category,subcategory,keywords,description,notes
 72,2026-03-09,,小红书,微信小程序,会员权益反馈,,"小程序 / Mini Program, 保级 / Tier Retention, 三个品牌 / 3 Brands, 30晚 / 30 Nights","评论询问小程序是否不支持三品牌保级（30晚/1.5万刀）/ Comment asking whether Mini Program supports 3-brand tier retention (30 nights / USD 15,000)",来源：小红书评论 / Source: Xiaohongshu comment
 73,2026-03-11,,小红书,GHA英文app,会员权益反馈,,"钛金 / Titanium, 奖励金 / Reward Points, 未到账 / Not Credited, Avani, 投诉 / Complaint",钛金会员预订Avani Seminyak Bali退店14天后奖励金及美金均未到账，邮件无回复，扬言放弃GHA / Titanium member: rewards and USD not credited 14 days after checkout at Avani Seminyak Bali; no email reply; threatening to leave GHA,高流失风险，用户情绪激烈，需紧急处理 / High churn risk; user very upset; urgent handling required
 74,2026-03-11,,小红书,其他,客服,,"全球客服 / Global Support, 联系方式 / Contact Info, 人工 / Human Agent",询问全球客服团队联系方式及人工客服渠道 / Requesting global customer service contact info and human support channels,引导发邮件至contact@ghadiscovery.com / Directed to email contact@ghadiscovery.com
-75,2026-03-12,12:00,小红书,其他,客服,人工客服,"人工客服 / Human Agent, 客服 / Support",请求人工客服,
+75,2026-03-12,12:00,小红书,其他,客服,人工客服,"人工客服 / Human Agent, 客服 / Support",请求人工客服 / Requesting human customer service,
 76,2026-03-12,,微信,其他,客服,,人工客服 / Human Support,询问人工客服渠道 / Inquiring about human customer service channels,
 77,2026-03-12,,小红书,其他,客服,,"联系方式 / Contact Info, 客服 / Support",评论询问如何联系客服 / Comment asking how to contact customer service,来源：小红书评论 / Source: Xiaohongshu comment
 78,2026-03-12,,小红书,其他,客服,,"人工客服 / Human Support, 联系方式 / Contact Info",询问人工客服渠道 / Inquiring about human customer service channels,引导发邮件至contact@ghadiscovery.com / Directed to email contact@ghadiscovery.com
-79,2026-03-12,11:55,微信,其他,客服,人工客服,"人工客服 / Human Agent, 客服 / Support",请求人工客服,疑为同一用户在微信和小红书（ID91）分别留言
+79,2026-03-12,11:55,微信,其他,客服,人工客服,"人工客服 / Human Agent, 客服 / Support",请求人工客服 / Requesting human customer service,疑为同一用户在微信和小红书（ID91）分别留言
 80,2026-03-15,,微信,其他,客服,,人工客服 / Human Support,询问人工客服渠道 / Inquiring about human customer service channels,
-81,2026-03-15,18:31,微信,其他,客服,人工客服,"人工客服 / Human Agent, 客服 / Support",请求人工客服,
-82,2026-03-18,14:09,微信,其他,客服,账号/邮箱,"会员 / Membership, 匹配 / Match, 账号 / Account",询问如何匹配/关联会员账号,
-83,2026-03-18,16:46,微信,其他,客服,人工客服,"客服电话 / Customer Hotline, 投诉 / Complaint",投诉平台无客服电话,
-84,2026-03-18,11:34,微信,其他,客服,人工客服,"客服电话 / Customer Hotline, 人工客服 / Human Agent",询问人工客服电话,发送两条内容相同的消息
+81,2026-03-15,18:31,微信,其他,客服,人工客服,"人工客服 / Human Agent, 客服 / Support",请求人工客服 / Requesting human customer service,
+82,2026-03-18,14:09,微信,其他,客服,账号/邮箱,"会员 / Membership, 匹配 / Match, 账号 / Account",询问如何匹配/关联会员账号 / Asking how to match or link a membership account,
+83,2026-03-18,16:46,微信,其他,客服,人工客服,"客服电话 / Customer Hotline, 投诉 / Complaint",投诉平台无客服电话 / Complaining that the platform has no customer service phone number,
+84,2026-03-18,11:34,微信,其他,客服,人工客服,"客服电话 / Customer Hotline, 人工客服 / Human Agent",询问人工客服电话 / Asking for the customer service phone number,发送两条内容相同的消息
 85,2026-03-18,,微信,其他,会员权益反馈,,"匹配会员 / Member Match, 会员关联 / Member Link",询问如何匹配/关联会员账号 / Asking how to match or link membership account,
-86,2026-03-18,,小红书,其他,客服,人工客服,"客服电话 / Customer Hotline, 投诉 / Complaint",投诉平台无客服电话，质疑集团服务能力,评论可见，需优先回复；负面评论
+86,2026-03-18,,小红书,其他,客服,人工客服,"客服电话 / Customer Hotline, 投诉 / Complaint",投诉平台无客服电话，质疑集团服务能力 / Complaining about no customer hotline and questioning the group's service capability,评论可见，需优先回复；负面评论
 87,2026-03-18,,微信,其他,客服,,"人工客服 / Human Support, 客服电话 / Support Hotline",询问人工客服电话联系方式（连发两条）/ Requesting human customer service phone number (sent twice),
 88,2026-03-19,,小红书,其他,会员权益反馈,,"D$, 奖励金 / Reward Points, 抵扣 / Deduction, 规则 / Rules",评论询问：预订赠送的D$是否可当次抵扣房费，还是需等下次使用 / Comment: asking whether D$ from booking can offset current stay or must be saved for next time,来源：小红书评论 / Source: Xiaohongshu comment
 89,2026-03-19,23:29,小红书,GHA英文app,功能,D$使用,"D$, 支付 / Payment, 预订 / Booking, 英文平台 / English Platform",询问英文平台预订时如何使用D$支付，未找到D$抵扣入口,客服回复D$支付功能将后续上线；已回复
 90,2026-03-19,,小红书,其他,客服,,"客服电话 / Support Hotline, 投诉 / Complaint, 无电话 / No Phone",评论投诉：没有客服电话，质疑集团服务体系 / Comment complaint: no customer service phone number; questioning group's service infrastructure,负面评论公开可见需及时回复 / Negative comment publicly visible; prompt response required
-91,2026-03-21,,小红书,其他,会员权益反馈,入住记录,"入住记录 / Stay Record, 积分 / Points, 年度计算 / Annual Reset",询问去年入住两个品牌后当前积分/入住记录显示为0的原因，疑为年度重置,评论可见，需优先回复
+91,2026-03-21,,小红书,其他,会员权益反馈,入住记录,"入住记录 / Stay Record, 积分 / Points, 年度计算 / Annual Reset","询问去年入住两个品牌后当前积分/入住记录显示为0的原因，疑为年度重置 / Asking why stay record shows 0 after staying at two brands last year, suspecting annual reset",评论可见，需优先回复
 92,2026-03-23,13:53,微信,其他,酒店规则和数据不一致,早餐权益,"凯宾斯基 / Kempinski, 早餐 / Breakfast, 权益 / Benefits, 投诉 / Complaint",投诉平台分布最多的凯宾斯基酒店无免费早餐，质疑加入GHA的意义,微信公众号留言，山东用户，关注3年
 93,2026-03-24,13:51,小红书,GHA英文app,功能,app下载,"安卓 / Android, app下载 / App Download, 客服 / Support",询问安卓手机如何下载GHA app,
-94,2026-03-24,19:25,微信,其他,功能,钛金权益,"钛金 / Titanium, 会员 / Membership, 权益 / Benefits",询问钛金会员相关权益,附有截图，使用繁体中文
+94,2026-03-24,19:25,微信,其他,功能,钛金权益,"钛金 / Titanium, 会员 / Membership, 权益 / Benefits",询问钛金会员相关权益 / Asking about Titanium membership benefits,附有截图，使用繁体中文
 95,2026-03-25,11:49,微信,其他,功能,奖励金规则,"奖励金 / Reward Points, D$, GHA",询问GHA奖励金相关问题,
-96,2026-03-26,15:31,微信,其他,功能,预订咨询,"预订 / Booking, 订房 / Room Reservation",请求协助预订酒店房间,
-97,2026-03-27,,小红书,其他,价格优势,餐饮折扣,"钛金 / Titanium, 嘉佩乐 / Capella, 折扣 / Discount, 餐饮 / Dining",询问钛金会员在嘉佩乐酒店餐厅是否享有折扣,
-98,2026-03-27,,小红书,其他,功能,活动规则,"活动 / Campaign, 叠加 / Stackable, 预订 / Booking, 权益 / Benefits",询问去年12月注册的活动是否适用于5月订房，以及能否与其他活动叠加,评论可见，需优先回复
-99,2026-03-27,20:45,小红书,微信小程序,技术bug,小程序崩溃,"小程序 / Mini Program, 无法使用 / Unavailable",反映小程序无法使用,与订单取消请求（ID84）同一对话
-100,2026-03-27,20:39,小红书,微信小程序,客服,订单取消,"订单取消 / Order Cancellation, 错误预订 / Wrong Booking, 钛金 / Titanium",请求协助取消错误预订的吉隆坡酒店订单,订单号95396SG000462，TITANIUM会员，2026-04-26入住2晚，已附订单截图
-101,2026-03-27,17:02,小红书,微信小程序,技术bug,预订表单,"邮箱 / Email, 填写 / Form, 预订 / Booking, 技术故障 / Technical Issue",反映预订页面邮箱字段无法填写,预订南京凯宾斯基，DISCOVERY Preferential Member Rate
-102,2026-03-27,15:58,微信,其他,客服,账号/邮箱,"账号 / Account, 姓名修改 / Name Change, 邮箱 / Email",请求修改账号中非本人姓名（邮箱账号已注册但姓名不符）,
-103,2026-03-29,02:20,微信,其他,客服,人工客服,"客服 / Support, 人工客服 / Human Agent",请求人工客服,
-104,2026-03-30,09:23,微信,其他,价格优势,奖励金活动,"奖励金 / Reward Points, 品牌 / Brand, 活动 / Campaign",询问入住两个以上品牌酒店最高赚取奖励金835的活动详情,
+96,2026-03-26,15:31,微信,其他,功能,预订咨询,"预订 / Booking, 订房 / Room Reservation",请求协助预订酒店房间 / Requesting assistance with hotel room booking,
+97,2026-03-27,,小红书,其他,价格优势,餐饮折扣,"钛金 / Titanium, 嘉佩乐 / Capella, 折扣 / Discount, 餐饮 / Dining",询问钛金会员在嘉佩乐酒店餐厅是否享有折扣 / Asking whether Titanium members get a dining discount at Capella hotel,
+98,2026-03-27,,小红书,其他,功能,活动规则,"活动 / Campaign, 叠加 / Stackable, 预订 / Booking, 权益 / Benefits",询问去年12月注册的活动是否适用于5月订房，以及能否与其他活动叠加 / Asking if campaign registered in December last year applies to May bookings and can stack with other offers,评论可见，需优先回复
+99,2026-03-27,20:45,小红书,微信小程序,技术bug,小程序崩溃,"小程序 / Mini Program, 无法使用 / Unavailable",反映小程序无法使用 / Reporting that the mini program is not working,与订单取消请求（ID84）同一对话
+100,2026-03-27,20:39,小红书,微信小程序,客服,订单取消,"订单取消 / Order Cancellation, 错误预订 / Wrong Booking, 钛金 / Titanium",请求协助取消错误预订的吉隆坡酒店订单 / Requesting help cancelling an erroneously booked Kuala Lumpur hotel order,订单号95396SG000462，TITANIUM会员，2026-04-26入住2晚，已附订单截图
+101,2026-03-27,17:02,小红书,微信小程序,技术bug,预订表单,"邮箱 / Email, 填写 / Form, 预订 / Booking, 技术故障 / Technical Issue",反映预订页面邮箱字段无法填写 / Reporting that the email field on the booking page cannot be filled in,预订南京凯宾斯基，DISCOVERY Preferential Member Rate
+102,2026-03-27,15:58,微信,其他,客服,账号/邮箱,"账号 / Account, 姓名修改 / Name Change, 邮箱 / Email",请求修改账号中非本人姓名（邮箱账号已注册但姓名不符）/ Requesting account name correction (email registered under wrong name),
+103,2026-03-29,02:20,微信,其他,客服,人工客服,"客服 / Support, 人工客服 / Human Agent",请求人工客服 / Requesting human customer service,
+104,2026-03-30,09:23,微信,其他,价格优势,奖励金活动,"奖励金 / Reward Points, 品牌 / Brand, 活动 / Campaign",询问入住两个以上品牌酒店最高赚取奖励金835的活动详情 / Asking about campaign details for earning up to 835 reward dollars by staying at two or more brand hotels,
 105,2026-03-30,13:39,微信,其他,功能,支付方式,"Visa, 支付 / Payment",询问是否支持Visa卡支付,"消息内容仅为""visa""，推断为询问支付方式"
 106,2026-03-30,14:31,微信,微信小程序,技术bug,账号信息,"姓名 / Name, 拼音 / Pinyin, 账号 / Account, 数据错误 / Data Error",反映小程序账号中姓名拼音显示错误（应为Zhai，显示为DI）,与记录93同一对话
-107,2026-03-30,14:31,微信,微信小程序,技术bug,会员等级同步,"小程序 / Mini Program, 钛金 / Titanium, 会员等级 / Membership Tier, 数据不一致 / Data Mismatch",反映邮箱和官网显示钛金会员，但小程序显示银卡会员，数据不同步,已回复引导发邮件至contact@ghadiscovery.com；已回复
+107,2026-03-30,14:31,微信,微信小程序,技术bug,会员等级同步,"小程序 / Mini Program, 钛金 / Titanium, 会员等级 / Membership Tier, 数据不一致 / Data Mismatch",反映邮箱和官网显示钛金会员，但小程序显示银卡会员，数据不同步 / Reporting membership tier mismatch: email and website show Titanium but mini program shows Silver,已回复引导发邮件至contact@ghadiscovery.com；已回复
