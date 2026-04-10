@@ -588,6 +588,56 @@ with col_f:
     st.dataframe(show, use_container_width=True, height=320, column_config=col_cfg)
     st.markdown('</div>', unsafe_allow_html=True)
 
+# ═══════════════════════════════════════
+# 板块 6：回复模板库
+# ═══════════════════════════════════════
+@st.cache_data(ttl=300)
+def load_templates():
+    tpl_path = os.path.join(os.path.dirname(__file__), 'templates.csv')
+    if not os.path.exists(tpl_path):
+        return pd.DataFrame()
+    return pd.read_csv(tpl_path, encoding='utf-8')
+
+tpl_df = load_templates()
+
+st.markdown('<div class="card">', unsafe_allow_html=True)
+st.markdown(
+    f'<div class="card-title">Reply Templates</div>'
+    f'<div class="card-subtitle">{t("回复模板库", "Reply Template Library")}</div>',
+    unsafe_allow_html=True
+)
+
+if not tpl_df.empty:
+    search = st.text_input(
+        t('🔍 搜索问题类型或关键词', '🔍 Search issue type or keyword'),
+        placeholder=t('例：早餐、投诉、奖励金', 'e.g. breakfast, complaint, rewards'),
+        key='tpl_search',
+        label_visibility='collapsed'
+    )
+    display_df = tpl_df.copy()
+    if search:
+        mask = display_df.apply(
+            lambda row: row.astype(str).str.contains(search, case=False, na=False).any(), axis=1
+        )
+        display_df = display_df[mask]
+
+    if display_df.empty:
+        st.info(t(f'未找到含"{search}"的模板', f'No templates matching "{search}"'))
+    else:
+        for _, row in display_df.iterrows():
+            q_preview = str(row['客户常见问法'])[:35] + ('…' if len(str(row['客户常见问法'])) > 35 else '')
+            with st.expander(f"**{row['问题类型']}** · {q_preview}"):
+                st.markdown(f"**{t('客户常见问法', 'Common Question')}**")
+                st.markdown(f"> {row['客户常见问法']}")
+                st.markdown(f"**{t('标准回复模板', 'Reply Template')}**")
+                st.info(row['标准回复模板'])
+                if pd.notna(row.get('备注')) and str(row.get('备注', '')).strip():
+                    st.caption(f"💡 {row['备注']}")
+else:
+    st.info(t('暂无模板，请添加 templates.csv', 'No templates found. Add templates.csv to the directory.'))
+
+st.markdown('</div>', unsafe_allow_html=True)
+
 st.markdown(
     f'<p style="text-align:right;color:#ccc;font-size:0.72rem;margin-top:8px">'
     f'{t(f"共 {len(df)} 条记录", f"{len(df)} records")} · '
