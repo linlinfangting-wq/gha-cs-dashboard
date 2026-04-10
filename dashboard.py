@@ -640,7 +640,9 @@ if not tpl_df.empty:
         )
         for _, row in df_section.iterrows():
             q_preview = str(row['客户常见问法'])[:40] + ('…' if len(str(row['客户常见问法'])) > 40 else '')
-            with st.expander(f"**{row['问题类型']}** · {q_preview}"):
+            issue_type = str(row['问题类型']).replace('$', r'\$')
+            q_preview_esc = q_preview.replace('$', r'\$')
+            with st.expander(f"**{issue_type}** · {q_preview_esc}"):
                 st.markdown(f"**{t('客户常见问法', 'Common Question')}**")
                 st.markdown(f"> {row['客户常见问法']}")
                 st.markdown(f"**{t('标准回复模板', 'Reply Template')}**")
