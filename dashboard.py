@@ -608,13 +608,36 @@ st.markdown(
 )
 
 if not tpl_df.empty:
-    search = st.text_input(
-        t('🔍 搜索问题类型或关键词', '🔍 Search issue type or keyword'),
-        placeholder=t('例：早餐、投诉、奖励金', 'e.g. breakfast, complaint, rewards'),
-        key='tpl_search',
-        label_visibility='collapsed'
-    )
+    # 联动：侧边栏选了类别就自动筛模板，没选则显示全部
+    CATEGORY_REVERSE = {v: k for k, v in {
+        '技术bug': '技术bug / Tech Bug',
+        '需求': '需求 / Feature Request',
+        '客服': '客服 / Support',
+        '功能': '功能 / Function',
+        '价格优势': '价格优势 / Pricing',
+        '会员权益反馈': '会员权益 / Benefits',
+        '酒店规则和数据不一致': '数据不一致 / Data Mismatch',
+        '其他': '其他 / Other',
+    }.items()}
+    active_cats = [CATEGORY_REVERSE.get(c, c) for c in sel_category] if sel_category else []
+
+    col_tpl, col_hint = st.columns([3, 1])
+    with col_tpl:
+        search = st.text_input(
+            t('🔍 搜索', '🔍 Search'),
+            placeholder=t('例：早餐、投诉、奖励金', 'e.g. breakfast, complaint, rewards'),
+            key='tpl_search', label_visibility='collapsed'
+        )
+    with col_hint:
+        if active_cats:
+            st.markdown(
+                f'<div style="padding-top:8px;font-size:0.8rem;color:{GOLD}">📌 {t("已按类别筛选", "Filtered by category")}</div>',
+                unsafe_allow_html=True
+            )
+
     display_df = tpl_df.copy()
+    if active_cats:
+        display_df = display_df[display_df['category'].isin(active_cats)]
     if search:
         mask = display_df.apply(
             lambda row: row.astype(str).str.contains(search, case=False, na=False).any(), axis=1
@@ -622,7 +645,7 @@ if not tpl_df.empty:
         display_df = display_df[mask]
 
     if display_df.empty:
-        st.info(t(f'未找到含"{search}"的模板', f'No templates matching "{search}"'))
+        st.info(t('当前类别暂无对应模板', 'No templates for current category'))
     else:
         for _, row in display_df.iterrows():
             q_preview = str(row['客户常见问法'])[:35] + ('…' if len(str(row['客户常见问法'])) > 35 else '')
