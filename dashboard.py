@@ -608,16 +608,11 @@ st.markdown(
 )
 
 if not tpl_df.empty:
-    # 联动：侧边栏选了类别就自动筛模板，没选则显示全部
     CATEGORY_REVERSE = {v: k for k, v in {
-        '技术bug': '技术bug / Tech Bug',
-        '需求': '需求 / Feature Request',
-        '客服': '客服 / Support',
-        '功能': '功能 / Function',
-        '价格优势': '价格优势 / Pricing',
-        '会员权益反馈': '会员权益 / Benefits',
-        '酒店规则和数据不一致': '数据不一致 / Data Mismatch',
-        '其他': '其他 / Other',
+        '技术bug': '技术bug / Tech Bug', '需求': '需求 / Feature Request',
+        '客服': '客服 / Support', '功能': '功能 / Function',
+        '价格优势': '价格优势 / Pricing', '会员权益反馈': '会员权益 / Benefits',
+        '酒店规则和数据不一致': '数据不一致 / Data Mismatch', '其他': '其他 / Other',
     }.items()}
     active_cats = [CATEGORY_REVERSE.get(c, c) for c in sel_category] if sel_category else []
 
@@ -625,7 +620,7 @@ if not tpl_df.empty:
     with col_tpl:
         search = st.text_input(
             t('🔍 搜索', '🔍 Search'),
-            placeholder=t('例：早餐、投诉、奖励金', 'e.g. breakfast, complaint, rewards'),
+            placeholder=t('例：早餐、D$、登录', 'e.g. breakfast, D$, login'),
             key='tpl_search', label_visibility='collapsed'
         )
     with col_hint:
@@ -634,6 +629,24 @@ if not tpl_df.empty:
                 f'<div style="padding-top:8px;font-size:0.8rem;color:{GOLD}">📌 {t("已按类别筛选", "Filtered by category")}</div>',
                 unsafe_allow_html=True
             )
+
+    def render_templates(df_section, section_label):
+        if df_section.empty:
+            return
+        st.markdown(
+            f'<div style="font-size:0.75rem;font-weight:700;letter-spacing:0.08em;'
+            f'text-transform:uppercase;color:{GOLD};margin:16px 0 8px">{section_label}</div>',
+            unsafe_allow_html=True
+        )
+        for _, row in df_section.iterrows():
+            q_preview = str(row['客户常见问法'])[:40] + ('…' if len(str(row['客户常见问法'])) > 40 else '')
+            with st.expander(f"**{row['问题类型']}** · {q_preview}"):
+                st.markdown(f"**{t('客户常见问法', 'Common Question')}**")
+                st.markdown(f"> {row['客户常见问法']}")
+                st.markdown(f"**{t('标准回复模板', 'Reply Template')}**")
+                st.info(row['标准回复模板'])
+                if pd.notna(row.get('备注')) and str(row.get('备注', '')).strip():
+                    st.caption(f"💡 {row['备注']}")
 
     display_df = tpl_df.copy()
     if active_cats:
@@ -645,17 +658,12 @@ if not tpl_df.empty:
         display_df = display_df[mask]
 
     if display_df.empty:
-        st.info(t('当前类别暂无对应模板', 'No templates for current category'))
+        st.info(t('当前条件下暂无对应模板', 'No templates match current filter'))
     else:
-        for _, row in display_df.iterrows():
-            q_preview = str(row['客户常见问法'])[:35] + ('…' if len(str(row['客户常见问法'])) > 35 else '')
-            with st.expander(f"**{row['问题类型']}** · {q_preview}"):
-                st.markdown(f"**{t('客户常见问法', 'Common Question')}**")
-                st.markdown(f"> {row['客户常见问法']}")
-                st.markdown(f"**{t('标准回复模板', 'Reply Template')}**")
-                st.info(row['标准回复模板'])
-                if pd.notna(row.get('备注')) and str(row.get('备注', '')).strip():
-                    st.caption(f"💡 {row['备注']}")
+        faq_df = display_df[display_df['section'] == '高频问题'] if 'section' in display_df.columns else display_df
+        std_df  = display_df[display_df['section'] == '标准回答'] if 'section' in display_df.columns else pd.DataFrame()
+        render_templates(faq_df, t('⚡ 高频问题', '⚡ Top FAQs'))
+        render_templates(std_df,  t('📋 标准回答', '📋 Standard Replies'))
 else:
     st.info(t('暂无模板，请添加 templates.csv', 'No templates found. Add templates.csv to the directory.'))
 
