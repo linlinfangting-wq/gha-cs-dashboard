@@ -643,12 +643,13 @@ if not tpl_df.empty:
             issue_type = str(row['问题类型']).replace('$', r'\$')
             q_preview_esc = q_preview.replace('$', r'\$')
             with st.expander(f"**{issue_type}** · {q_preview_esc}"):
+                def esc(s): return str(s).replace('$', r'\$')
                 st.markdown(f"**{t('客户常见问法', 'Common Question')}**")
-                st.markdown(f"> {row['客户常见问法']}")
+                st.markdown(f"> {esc(row['客户常见问法'])}")
                 st.markdown(f"**{t('标准回复模板', 'Reply Template')}**")
-                st.info(row['标准回复模板'])
+                st.info(esc(row['标准回复模板']))
                 if pd.notna(row.get('备注')) and str(row.get('备注', '')).strip():
-                    st.caption(f"💡 {row['备注']}")
+                    st.caption(f"💡 {esc(row['备注'])}")
 
     display_df = tpl_df.copy()
     if active_cats:
