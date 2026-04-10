@@ -634,8 +634,10 @@ if not tpl_df.empty:
         if df_section.empty:
             return
         st.markdown(
-            f'<div style="font-size:0.75rem;font-weight:700;letter-spacing:0.08em;'
-            f'text-transform:uppercase;color:{GOLD};margin:16px 0 8px">{section_label}</div>',
+            f'<div style="font-size:1rem;font-weight:700;letter-spacing:0.04em;'
+            f'color:white;background:linear-gradient(90deg,{NAVY} 0%,#2A2A5A 100%);'
+            f'border-left:4px solid {GOLD};border-radius:0 8px 8px 0;'
+            f'padding:10px 16px;margin:20px 0 10px">{section_label}</div>',
             unsafe_allow_html=True
         )
         for _, row in df_section.iterrows():
