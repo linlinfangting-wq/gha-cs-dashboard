@@ -122,3 +122,15 @@ id,date,time,channel,platform,category,subcategory,keywords,description,notes
 121,2026-04-07,17:10,小红书,其他,客服,人工客服,"客服 / Support, 人工客服 / Human Agent",发送客服请求人工客服 / Sent customer service keyword to request human agent,已自动回复
 122,2026-04-08,09:11,小红书,其他,技术bug,奖励金未到账,"奖励金 / Reward Points, 生日 / Birthday, 未到账 / Not Received",反馈生日奖励金未到账，提供会员号8135972734 / Reporting birthday reward dollars not received; membership ID 8135972734,已回复引导发邮件至contact@ghadiscovery.com；已回复
 123,2026-04-09,10:59,微信,其他,技术bug,积分未到账,"积分 / Points, 未到账 / Not Received",反馈积分没有到账 / Reporting that reward points have not been credited to account,
+124,2026-04-10,13:50,小红书,其他,技术bug,奖励金未到账,"奖励金 / Reward Points, 未到账 / Not Received, 联系方式 / Contact",询问奖励金未到账后如何联系客服 / Inquiry on how to contact support for unreceived reward points,已回复，引导发邮件至contact@ghadiscovery.com；与2026-03-05同一用户（四季春去冰三分糖）
+125,2026-04-11,20:54,微信,其他,功能,奖励金使用,"奖励金 / Reward Points, 家属 / Family Member",询问奖励金是否可以赠送给家属 / Inquiry on whether reward points can be transferred to family members,已自动回复引导发邮件
+126,2026-04-12,20:58,微信,微信小程序,技术bug,房间不可预订,"预订 / Booking, 无房间 / No Availability, 小程序 / Mini Program",反馈苏州泛太平洋4.30-5.1期间均显示暂无可预订房间 / Reported that no rooms are available for booking at Suzhou Pan Pacific from April 30 to May 1,已回复，引导通过官网或小程序预订
+127,2026-04-13,01:43,小红书,其他,功能,关键词查询,"活动 / Promotion, 服务介绍 / Service Info",发送最新活动和服务介绍关键词查询相关信息 / Sent keywords to query latest promotions and service introduction,已自动回复
+128,2026-04-13,21:41,小红书,其他,功能,奖励金使用,"奖励金 / Reward Points, 房费 / Room Rate, 预订 / Booking",询问如何使用奖励金支付房费 / Inquiry on how to use reward points to pay for room fees,已自动回复引导至官网
+129,2026-04-14,11:15,微信,其他,其他,合作咨询,"合作 / Partnership, 酒店加盟 / Hotel Membership",询问酒店如何成为GHA的一员并展开合作 / Inquiry on how a hotel can join GHA and initiate a partnership,已自动回复；B端合作咨询
+130,2026-04-15,16:18,微信,其他,功能,权益查询,会员权益 / Member Benefits,发送会员权益关键词查询会员权益信息 / Sent keyword to query membership benefits information,已自动回复
+131,2026-04-15,18:53,微信,其他,功能,奖励金使用,"奖励金 / Reward Points, 预订 / Booking",询问如何使用奖励金订房 / Inquiry on how to use reward points for hotel booking,仅见列表消息，无详细对话截图；已自动回复
+132,2026-04-15,19:22,微信,其他,会员权益反馈,房型升级,"钛金 / Titanium, 升级 / Upgrade, 房型 / Room Type",询问钛金会员如何升级房型 / Inquiry on how Titanium members can upgrade their room type,仅见列表消息，无详细对话截图
+133,2026-04-15,22:03,微信,其他,客服,人工客服,"客服电话 / Support Phone, 人工客服 / Human Agent",询问是否有人工客服电话 / Inquiry on whether there is a human customer service phone line,已回复：暂无电话服务，引导发邮件至contact@ghadiscovery.com
+134,2026-04-15,22:14,微信,其他,功能,酒店查询,"酒店 / Hotel, 预订 / Booking, 大阪 / Osaka",询问大阪柏典酒店的预订方式及钛金会员早餐权益 / Inquiry on how to book Hotel The Flag Osaka and Titanium breakfast benefits,已回复，引导通过官网或小程序预订
+135,2026-04-16,21:02,微信,其他,价格优势,员工价,"员工价 / Staff Rate, 价格 / Price",询问员工价相关信息 / Inquiry on staff rate information,仅见列表消息，无详细对话截图
