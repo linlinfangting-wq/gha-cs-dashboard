@@ -134,3 +134,22 @@ id,date,time,channel,platform,category,subcategory,keywords,description,notes
 133,2026-04-15,22:03,微信,其他,客服,人工客服,"客服电话 / Support Phone, 人工客服 / Human Agent",询问是否有人工客服电话 / Inquiry on whether there is a human customer service phone line,已回复：暂无电话服务，引导发邮件至contact@ghadiscovery.com
 134,2026-04-15,22:14,微信,其他,功能,酒店查询,"酒店 / Hotel, 预订 / Booking, 大阪 / Osaka",询问大阪柏典酒店的预订方式及钛金会员早餐权益 / Inquiry on how to book Hotel The Flag Osaka and Titanium breakfast benefits,已回复，引导通过官网或小程序预订
 135,2026-04-16,21:02,微信,其他,价格优势,员工价,"员工价 / Staff Rate, 价格 / Price",询问员工价相关信息 / Inquiry on staff rate information,仅见列表消息，无详细对话截图
+136,2026-04-22,06:44,微信,其他,会员权益反馈,早餐权益,"铂金 / Platinum, 早餐 / Breakfast, 权益 / Benefits",询问铂金卡会员入住时免费早餐是否只有一份 / Inquiry on whether Platinum member's complimentary breakfast covers only one person,已回复，引导查看钛金早餐礼遇名录
+137,2026-04-26,17:31,微信,其他,技术bug,会员降级,"钛金 / Titanium, 会员降级 / Membership Downgrade, 账号 / Account",反馈钛金卡会员在入住扬州博朗逸格酒店后异常降级为银卡，APP内升级界面消失 / Report of Titanium membership unexpectedly downgraded to Silver after hotel stay with in-app upgrade UI disappearing,已自动回复，引导发邮件；情况严重需人工跟进
+138,2026-04-27,12:02,微信,其他,客服,人工客服,"客服 / Support, 人工客服 / Human Agent",询问是否有人工客服 / Inquiry on human customer service availability,已自动回复
+139,2026-04-28,16:16,微信,其他,功能,奖励金到期,"奖励金 / Reward Points, 到期 / Expiration",询问奖励金到期时间 / Inquiry on reward points expiration date,已自动回复
+140,2026-04-28,17:34,微信,其他,其他,品牌咨询,"品牌 / Brand, 咨询 / Inquiry",发送品牌关键词触发自动回复，无实质性问题 / User triggered auto-reply with brand keyword with no specific inquiry,仅关键词触发，已自动回复
+141,2026-04-29,17:01,微信,其他,客服,人工客服,"客服 / Support, 人工客服 / Human Agent",询问是否有人工客服 / Inquiry on human customer service availability,已回复，告知暂无电话服务，引导发邮件
+142,2026-05-04,09:46,微信,其他,功能,平台体验,"福利 / Benefits, 功能 / Feature, 平台 / Platform",询问平台是否好用及会员福利介绍 / Inquiry on platform usability and membership benefits overview,分两次联系，已自动回复
+143,2026-05-04,17:45,微信,其他,功能,平台咨询,"App / App, 功能 / Feature",询问App相关信息 / Inquiry on app information,已自动回复
+144,2026-05-04,20:59,微信,其他,价格优势,D$获取活动,"D$, 奖励金 / Reward Points, 活动 / Promotion",询问入住两晚最高可获得825探索美金的活动详情 / Inquiry on promotion offering up to 825 DISCOVERY dollars for 2-night stays,已自动回复
+145,2026-05-05,20:12,微信,其他,会员权益反馈,会员等级查询,"会员等级 / Membership Level, 会员 / Membership",询问个人会员等级 / Inquiry on personal membership tier,已自动回复
+146,2026-04-13,21:41,小红书,微信小程序,功能,奖励金使用,"奖励金 / Reward Points, 预订 / Booking, 房费 / Room Rate",询问如何使用奖励金支付房费并预订酒店 / Inquiry on how to use reward points to pay for room and book hotels,已自动回复，引导至官网
+147,2026-04-13,01:43,小红书,其他,功能,活动查询,"活动 / Promotion, 服务 / Service, 早餐 / Breakfast",询问最新活动和服务介绍 / Inquiry on latest promotions and service overview,已自动回复，推送早餐礼遇笔记
+148,2026-04-19,08:37,小红书,微信小程序,技术bug,日期显示问题,"小程序 / Mini Program, 日期 / Date, 搜索 / Search",反馈小程序搜索酒店时所有结果显示无可用日期 / Report that all hotel search results show no available dates in mini program,需人工跟进
+149,2026-04-20,21:28,小红书,微信小程序,功能,独家体验预订,"独家体验 / Exclusive Experience, 预订 / Booking, 入住 / Check-in",询问独家体验项目是否必须同时入住酒店才可预订 / Inquiry on whether exclusive experience packages require hotel stay to book,已自动回复，后续继续发消息
+150,2026-04-23,09:46,小红书,微信小程序,功能,预订咨询,"预订 / Booking, 酒店 / Hotel",询问酒店预订方式 / Inquiry on how to book a hotel,已自动回复，引导至官网
+151,2026-04-25,21:12,小红书,其他,功能,服务介绍,"服务 / Service, 介绍 / Introduction",询问服务介绍 / Inquiry on service overview,已自动回复
+152,2026-04-29,16:35,小红书,其他,客服,人工客服,"客服 / Support, 人工客服 / Human Agent",询问是否有人工客服 / Inquiry on human customer service availability,已自动回复
+153,2026-05-03,18:51,小红书,其他,客服,人工客服,"客服 / Support, 人工客服 / Human Agent",询问是否有人工客服 / Inquiry on human customer service availability,已自动回复
+154,2026-05-04,09:50,小红书,其他,客服,投诉渠道,"投诉 / Complaint, 邮箱 / Email, 会员 / Membership",询问官方投诉邮箱及会员计划信息 / Inquiry on official complaint email and membership plan details,已自动回复，引导至官网及会员页面；同时询问了预订和会员计划
